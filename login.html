@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- metas para el uso de la aplicacion en moviles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>Proyecto DAW</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+  <!-- Nuestros link -->
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/script.js" type="text/javascript"></script>
+  <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="pull-left logo" href="index.html">
+          <img src="./media/img/logop.png" class="logo" alt="logo">
+        </a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="login.html">Identificate</a></li>
+          <li><a href="#">Reservas</a></li>
+          <li><a href="#">Contacta</a></li>
+          <li><a href="#">¿Quienes somos?</a></li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+  </nav>
+
+
+
+
+  <div class="container contenedor">
+    <div class="registro">
+      <div class="row">
+        <div class="col-md-1"></div><!-- Columna vacia -->
+        <!-- Login -->
+        <div class="col-md-5">
+          <h3>Inicia sesión</h3>
+          <form role="form" action="" method="post">
+            <div class="form-group" id="form-group-usuario">
+              <label for="usuario">Usuario:</label>
+              <input onchange="mandaValor('usuario')" type="text" class="form-control" name="usuario" id="usuario" placeholder="Name" required>
+            </div>
+
+            <div class="form-group" id="form-group-passwd">
+              <label for="usuario">Contraseña:</label>
+              <input onchange="mandaValor('passwd')" type="password" class="form-control" name="passwd" id="passwd" placeholder="Password" required>
+            </div>
+
+            <button type="submit" onclick="compruebaLog()" class="btn btn-default">Login</button>
+          </form>
+        </div>
+        <!-- fin Login -->
+
+        <!-- Registrarse -->
+        <div class="col-md-5">
+          <h3>Registrate</h3>
+            <form role="form" action="" method="post">
+              <div class="form-group" id="form-group-usuarioReg">
+                <label for="usuario"><span class="required">*</span> Nombre de usuario:</label>
+                <input onchange="mandaValor('usuarioReg')" type="text" class="form-control" name="usuarioReg" id="usuarioReg" placeholder="Usuario" required>
+              </div>
+
+              <div class="form-group" id="form-group-passwdReg">
+                <label for="contrasena"><span class="required">*</span> Contraseña:</label>
+                <input onchange="mandaValor('passwdReg')" type="password" class="form-control" name="passwdReg" id="passwdReg" placeholder="Password" required>
+              </div>
+
+              <div class="form-group" id="form-group-passwdReg2">
+                <label for="contrasena2"><span class="required">*</span> Repita contraseña:</label>
+                <input onchange="mandaValor('passwdReg2')" type="password" class="form-control" name="passwdReg2" id="passwdReg2" placeholder="Password" required></td>
+              </div>
+
+              <div class="form-group" id="form-group-email">
+                <label for="email"><span class="required">*</span> Correo electrónico:</label>
+                <input onchange="mandaValor('email')" type="email" class="form-control" name="email" id="email" placeholder="usuario@gmail.com" required>
+              </div>
+
+              <div class="form-group" id="form-group-telefono">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" class="form-control" name="telefono" id="telefono">
+              </div>
+
+              <div class="form-group" id="form-group-fechaNac">
+                <label for="fechaNac"><span class="required">*</span> Fecha de nacimiento:</label>
+                <input onchange="mandaValor('fechaNac')" type="date" class="form-control" name="fechaNac" id="fechaNac">
+              </div>
+
+              <button type="submit" onclick="compruebaReg()" class="btn btn-primary">Regístrate</button>
+            </form>
+        </div>
+        <!-- Fin registro -->
+        <div class="col-md-1"></div><!-- Columna vacia -->
+      </div>
+    </div>
+  </div>
+</body>
+</html>

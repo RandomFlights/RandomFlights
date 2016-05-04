@@ -1,0 +1,84 @@
+.contenedor {
+    padding-top: 100px;
+}
+
+.centered {
+    text-align:center;
+}
+.centrado {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/*Cabecera*/
+.logo {
+    width: 130px;
+    margin: 5px;
+}
+
+.navbar-fixed-top .nav {
+    padding: 15px 0;
+}
+
+.navbar-fixed-top .navbar-brand {
+    padding: 0 15px;
+}
+
+@media(min-width:768px) {
+    body {
+        padding-top: 100px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+    }
+
+    .navbar-fixed-top .navbar-brand {
+        padding: 15px 0;
+    }
+}
+/*fin cabecera*/
+
+/*contenedor*/
+.frases {
+    border-radius: 100px 0px 0px 0px;
+    -moz-border-radius: 100px 0px 0px 0px;
+    -webkit-border-radius: 100px 0px 0px 0px;
+    background-color: #FF9E54;
+    padding: 20px;
+
+}
+
+.bienvenida {
+    border-radius: 0px 100px 0px 0px;
+    -moz-border-radius: 0px 0px 100px 0px;
+    -webkit-border-radius: 0px 0px 100px 0px;
+    background-color: #416BFF;
+    padding: 20px;
+    color: white;
+}
+
+.formulario {
+    visibility: hidden; 
+    background-color: white;
+}
+
+/*video*/
+video#bgvid { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    /*background: url() no-repeat;*/
+    background-size: cover; 
+}
+video { display: block; }
+/*fin video*/
+
+.required {
+    color: red;
+}

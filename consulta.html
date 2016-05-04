@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+
+$(document).ready(function(){
+			
+			$('body').load(busqueda);
+			
+		});
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		
+
+function logins(){
+	
+	var nie = $('#nie').val();
+  	var cnt = $('#clave').val();
+  	
+	
+	var peticion = $.ajax({
+	url:  'login.php?nocache='+Math.random(),
+	type: 'POST',
+	async: true,
+	data: 'nie='+encodeURIComponent(nie)+'&cnt='+encodeURIComponent(cnt),
+	success: function(){
+		$("#respuesta").fadeIn(500);
+		$("#respuesta").slideUp(700);
+		$("#respuesta").slideDown(700);
+		
+		$("#respuesta").html(peticion.responseText);
+		
+
+		},
+	error: function(){
+			alert('Se produjo un error inesperado');}
+
+		});
+	
+}
+
+
+
+	api.wego.com/flights/api/k/2/fares de la POST
+{
+  "Id": "1376967853520",
+  "SEARCH_ID": "T5dJTxtxQv-uQ6OuYtaWkw",
+  "Trip_id": "SB: LON: 01/24/2014: 01/29/2014",
+  "Fares_query_type": "ruta"
+}     
+
+</script>
+
+</body>
+</html>

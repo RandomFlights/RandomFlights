@@ -1,0 +1,11 @@
+http://www.afiliado.com/foro/viewtopic.php?f=15&t=2322
+
+//Vuelo madrid barcelona
+
+http://www.edreams.es/travel/#/results/type=R;dep=2016-03-11;from=MAD;to=BCN;ret=2016-04-07;collectionmethod=false;airlinescodes=false;internalSearch=true
+
+
+
+//busqueda de hotel
+
+http://hotels.edreams.es/searchresults.html?aid=350432;checkin_monthday=18;checkin_year_month=2016-3;checkout_monthday=22;checkout_year_month=2016-3;dest_id=-390625;dest_type=city;exp=edreams_sb_title_v1;label=edr-sb-es-conf;lang=es;si=ai%2Cco%2Cci%2Cre%2Cdi;ss=Madrid%2C%20Comunidad%20de%20Madrid%2C%20Espa%C3%B1a&utm_campaign=search_box&utm_medium=sp&utm_term=344785&
