@@ -21,8 +21,8 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
   <!-- Nuestros link -->
-  <link rel="stylesheet" href="./css/style.css">  
-  <script src="./js/script.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="../css/style.css">  
+  <script src="../js/script.js" type="text/javascript"></script>
   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 
 
@@ -38,18 +38,18 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="pull-left logo" href="index.html">
-              <img src="./media/img/logop.png" class="logo" alt="logo">
+            <a class="pull-left logo" href="../index.html">
+              <img src="../media/img/logop.png" class="logo" alt="logo">
             </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li><a href="index.html">Inicio</a></li>
-              <li><a href="paginas/login.html">Identificate</a></li>
+              <li><a href="../index.html">Inicio</a></li>
+              <li><a href="login.html">Identificate</a></li>
               <li><a href="#">Reservas</a></li>
               <li><a href="#">Contacta</a></li>
-              <li><a href="paginas/quienes_somos.html">¿Quienes somos?</a></li>
+              <li><a href="quienes_somos.html">¿Quienes somos?</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -57,62 +57,17 @@
       <!-- /.container -->
     </nav>
 
-
-
-
   <div class="container contenedor">
-    <div class="row height-title-row">
-      <video autoplay loop id="bgvid">
-          <source src="./media/video/cover.mp4" type="video/mp4">
-      </video>
-      <div class="frases col-md-6">
-        <h1>"El mundo es un libro, y aquellos que no viajan leen solo una página." -San Agustín.</h1>
-      </div>
-
-      <div class="col-md-1"></div>
-
-      <div class="bienvenida col-md-5">
-          <h2>Bienvenidos/as a Random Flights!</h2>
-          <h3>Nos encargamos de buscarte un vuelo sorpresa a partir de tus disponibilidades.</h3>
-          <h1>¿Te atreves?</h1>
-          <button type="button" class="btn btn-primary btn-lg" onclick="mostarForm()">COMENZAR!</button>      
-      </div>
+    <div class="row">
+      <div class="col-md-7">Imagen(col-md-7)</div>
+      <div class="col-md-1">(col-md-1)</div>
+      <div class="col-md-4">texto(col-md-4)</div>
     </div>
 
-    <div class="formulario" id="formulario">
-      <div class="row">
-        <form role="form" action="" method="post">
-          <div class="col-md-2"></div>
-            <div class="col-md-8">
-              <div class="form-group" id="form-group-presupuesto">
-                <label for="origen">Presupuesto inicial:</label>
-                <div id="slider">
-                      <div class="col-md-8">
-                        <input class="bar" type="range" id="rangeinput" value="50" min="0" max="3000" onchange="rangevalue.value=value" />
-                      </div>
-                      <div class="col-md-4">
-                        <output id="rangevalue">150</output>
-                      </div>
-                    </div>
-              </div>
-
-              <div class="form-group" id="form-group-origen">
-                <label for="origen">Origen:</label>
-                <input type="text" class="form-control" name="origen" id="origen" placeholder="Ej; Madrid" required>
-              </div>
-
-              <div class="form-group" id="form-group-avenureros">
-                <label for="origen">Numero de aventureros:</label>
-                <input type="number" class="form-control" name="aventureros" id="aventureros" required>
-              </div>
-
-              <button type="button" id="comenzar" class="btn btn-default">Enviar</button>
-              
-              
-            </div>
-          <div class="col-md-2"></div>
-        </form>
-      </div>
+    <div class="row">
+      <div class="col-md-4">texto(col-md-4)</div>
+      <div class="col-md-1">(col-md-1)</div>
+      <div class="col-md-7">Imagen(col-md-7)</div>
     </div>
   </div>
 

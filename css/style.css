@@ -114,11 +114,13 @@ video { display: block; }
     color: #f39c12;
 }
 
-
-
 .footer {
   width: 100%;
   background-color: #f5f5f5;
+}
+
+ul {
+    list-style-type: none;
 }
 
 /*fin footer*/
