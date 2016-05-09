@@ -27,6 +27,7 @@
 
 
 <body>
+  <?php include("funciones.php"); ?>
   <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
@@ -75,11 +76,11 @@
             </div>
 
             <div class="form-group" id="form-group-passwd">
-              <label for="usuario">Contraseña:</label>
+              <label for="contrasena">Contraseña:</label>
               <input onchange="mandaValor('passwd')" type="password" class="form-control" name="passwd" id="passwd" placeholder="Password" required>
             </div>
 
-            <button type="submit" onclick="compruebaLog()" class="btn btn-default">Login</button>
+            <input type="button" id="submit" name="submit" class="btn btn-default" value="Login">
           </form>
         </div>
         <!-- fin Login -->
@@ -89,12 +90,12 @@
           <h3>Registrate</h3>
             <form role="form" action="" method="post">
               <div class="form-group" id="form-group-usuarioReg">
-                <label for="usuario"><span class="required">*</span> Nombre de usuario:</label>
+                <label for="usuarioReg"><span class="required">*</span> Nombre de usuario:</label>
                 <input onchange="mandaValor('usuarioReg')" type="text" class="form-control" name="usuarioReg" id="usuarioReg" placeholder="Usuario" required>
               </div>
 
               <div class="form-group" id="form-group-passwdReg">
-                <label for="contrasena"><span class="required">*</span> Contraseña:</label>
+                <label for="contrasenaReg"><span class="required">*</span> Contraseña:</label>
                 <input onchange="mandaValor('passwdReg')" type="password" class="form-control" name="passwdReg" id="passwdReg" placeholder="Password" required>
               </div>
 
@@ -118,7 +119,7 @@
                 <input onchange="mandaValor('fechaNac')" type="date" class="form-control" name="fechaNac" id="fechaNac">
               </div>
 
-              <button type="submit" onclick="compruebaReg()" class="btn btn-primary">Regístrate</button>
+              <input type="button" id="submitReg" name="submitReg" class="btn btn-primary" value="Regístrate">
             </form>
         </div>
         <!-- Fin registro -->
@@ -126,6 +127,9 @@
       </div>
     </div>
   </div>
+
+
+<div id="LOGEADO"> </div>
 
   <footer>
     <div class="footer navbar navbar-fixed-bottom">
