@@ -4,7 +4,7 @@
     $conexion = conexion($bbdd);
 
     //RECOGER VARIABLES
-    if(isset($_POST['usuarioReg']), && isset($_POST['passwdReg']), && isset($_POST['email']), && isset($_POST['telefono']), && isset($_POST['fechaNac']))
+    if(isset($_POST['usuarioReg']) && isset($_POST['passwdReg']) && isset($_POST['email']) && isset($_POST['telefono']) && isset($_POST['fechaNac'])) {
         $usuarioReg = $_POST['usuarioReg'];
         $passwdReg = $_POST['passwdReg'];
         $email = $_POST['email'];
@@ -21,7 +21,7 @@
         else 
             echo "true"; 
 
-    else
+    } else
         echo "false";
 
     mysql_close($conexion);
