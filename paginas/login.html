@@ -20,14 +20,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+
   <!-- Nuestros link -->
   <link rel="stylesheet" href="../css/style.css">
   <script src="../js/script.js" type="text/javascript"></script>
-  <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+  <script src="../js/jquery-latest.js" type="text/javascript"></script>
 
 
 <body>
-  <?php include("funciones.php"); ?>
+
   <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
@@ -49,8 +50,8 @@
               <li><a href="../index.html">Inicio</a></li>
               <li><a href="login.html">Identificate</a></li>
               <li><a href="#">Reservas</a></li>
-              <li><a href="#">Contacta</a></li>
-              <li><a href="quienes_somos.html">¿Quienes somos?</a></li>
+              <li><a href="./contacta.html">Contacta</a></li>
+              <li><a href="./quienes_somos.html">¿Quienes somos?</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -59,10 +60,10 @@
     </nav>
 
 
-
-
-
   <div class="container contenedor">
+    <div id="REGISTRADO"></div>
+    <div id="login"></div>
+    <div id="LOGEADO"></div>
     <div class="registro">
       <div class="row">
         <div class="col-md-1"></div><!-- Columna vacia -->
@@ -128,8 +129,6 @@
     </div>
   </div>
 
-
-<div id="LOGEADO"> </div>
 
   <footer>
     <div class="footer navbar navbar-fixed-bottom">

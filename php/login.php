@@ -1,13 +1,13 @@
 <?php
 	include("funciones.php");
-    $bbdd = 'RandomFlights'; 
+    $bbdd = 'randomflights'; 
     $conexion = conexion($bbdd);
 
     //RECOGER VARIABLES
-    $usuario = $_REQUEST['usuario'];
-    $passwd = $_REQUEST['passwd'];
+    $user = $_POST['user'];
+    $passwd = $_POST['passwd'];
     
-	$consulta = mysql_query("SELECT * FROM registro WHERE usuario='$usuario' AND passwd='$passwd'",$conexion);
+	$consulta = mysql_query("SELECT * FROM registro WHERE nombre='$user' AND password='$passwd'",$conexion);
     while($fila = mysql_fetch_array($consulta)) {
         if($fila == 0) 
             echo "false";
