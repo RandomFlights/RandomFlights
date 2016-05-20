@@ -1,10 +1,11 @@
 $(document).ready(function(){
     $('#submitReg').click(compruebaReg);
     $('#submitLog').click(compruebaLog);
+    $('#comenzar').click(buscarVuelos);
 });
 
 /*FUNCION PARA REGISTRARSE {*/
-/* smartsupp */
+/*FUNCION smartsupp { 
 var _smartsupp = _smartsupp || {};
 _smartsupp.key = 'ebc7ae870411addaf165f962b203459b48f41d44';
 window.smartsupp||(function(d) {
@@ -13,9 +14,7 @@ window.smartsupp||(function(d) {
   c.type='text/javascript';c.charset='utf-8';c.async=true;
   c.src='//www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
 })(document);
-
-
-
+/*}*/
 
 function crearCuenta(){
   var usuarioReg = $('#usuarioReg').val();
@@ -158,3 +157,51 @@ function cambiaFotoOut() {
   document.getElementById("botoncomenzar").src="./media/img/botoncomenzar1.png";
 }
 /*}*/
+
+/*FUNCION PARA CAMBIAR LAS FRASES ALREFRESCAR LA PAGINA*/
+function cambiafrase() {
+  var frases = [
+    '"El mundo es un libro, y aquellos que no viajan leen solo una página." -San Agustín.',
+    '"No hay tierras extranjeras. Quien viaja es el único extranjero". – Robert Louis Stevenson',
+    '"Aquel que no viaja no conoce el valor de los hombres". – Proverbio moro',
+    '"Nuestro destino nunca es un lugar, sino una nueva forma de ver las cosas". – Henry Miller',
+    '"Un viajero sin capacidad de observación es como un pájaro sin alas" – Moslih Eddin Saadi',
+    '"Todos los viajes tienen destinos secretos sobre los que el viajero nada sabe". – Martin Buber',
+    '"Dos senderos se abrían en el bosque y yo… yo tomé el menos transitado". – Robert Frost',
+    '"Un buen viajero no tiene planes fijos ni tampoco la intención de llegar" – Lao Tzu',
+    '"Es el viaje y no el arribo el que importa" – T. S. Eliot',
+    '"Un viaje se mide mejor en amigos que en millas" –  Tim Cahill',
+    '"No todos los que deambulan están perdidos" – J. R. R. Tolkien',
+    '"Viajar y cambiar de lugar revitaliza la mente". – Seneca',
+    '"Viajar es descubrir que todos están equivocados sobre los otros países". – Aldous Huxley',
+    '"El viajar sólo es glamoroso cuando se lo mira en retrospectiva". – Paul Theroux',
+    '"Un viajero sabio nunca desprecia a su propio país". – Carlo Goldoni'
+  ]
+  var ale = Math.floor(Math.random() * 14);
+
+  document.getElementById("frase").innerHTML=frases[ale];
+}
+/*}*/
+
+/*FUNCION PARA BUSCAR VUELOS {*/
+function buscarVuelos(){
+  var origen = $('#origen').val();
+  var pvp = $('#rangevalue').val();
+  
+  var peticion = $.ajax({
+  url:  'http://127.0.0.1/PROYECTOV2/php/vuelos.php?nocache='+Math.random(),
+  type: 'POST',
+  asnc: true,
+  data: 'origen='+encodeURIComponent(origen) +
+        '&pvp='+encodeURIComponent(pvp),
+  success: function(){
+    $("#RESULTADO_DE_VUELOS").fadeIn(500);
+    $("#RESULTADO_DE_VUELOS").slideUp(300);
+    $("#RESULTADO_DE_VUELOS").slideDown(500);
+    $("#RESULTADO_DE_VUELOS").html(peticion.responseText);
+    },
+    error: function(){alert('Se produjo un error inesperado');}
+    });
+}
+/*}*/
+

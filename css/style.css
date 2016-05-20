@@ -1,5 +1,6 @@
 .contenedor {
     padding-top: 100px;
+    margin-bottom: 350px;
 }
 
 .centered {
@@ -143,8 +144,20 @@ ul {
     background-repeat: no-repeat;
     visibility: hidden;
 }
+/*Para movil*/
+@media only screen and (max-width : 400px) {
+    #login { display: none; }
+    #LOGEADO { display: none; }
+    html { font-size:0.1em; }
+    #frase { font-size: 27px; }
+}
 
 /*botones*/
 .botoncomenzar {
     width: 130px;
+}
+
+.vuelos {
+    border: 2px solid black;
+    background-color: white;
 }
