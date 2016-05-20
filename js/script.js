@@ -5,7 +5,6 @@ $(document).ready(function(){
 });
 
 /*FUNCION PARA REGISTRARSE {*/
-/*FUNCION smartsupp { 
 var _smartsupp = _smartsupp || {};
 _smartsupp.key = 'ebc7ae870411addaf165f962b203459b48f41d44';
 window.smartsupp||(function(d) {
@@ -14,6 +13,7 @@ window.smartsupp||(function(d) {
   c.type='text/javascript';c.charset='utf-8';c.async=true;
   c.src='//www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
 })(document);
+
 /*}*/
 
 function crearCuenta(){
