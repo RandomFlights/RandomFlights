@@ -125,9 +125,19 @@
                 <input type="text" class="form-control" name="origen" id="origen" placeholder="Ej; Madrid" required>
               </div>
 
+              <div class="form-group" id="form-group-fecha_salida">
+                <label for="fecha_salida">Fecha de salida:</label>
+                <input type="date" class="form-control" name="fecha_salida" id="fecha_salida" required>
+              </div>
+
+              <div class="form-group" id="form-group-fecha_vuelta">
+                <label for="fecha_vuelta">Fecha de vuelta:</label>
+                <input type="date" class="form-control" name="fecha_vuelta" id="fecha_vuelta" required>
+              </div>
+
               <div class="form-group" id="form-group-avenureros">
                 <label for="origen">Numero de aventureros:</label>
-                <input type="number" class="form-control" name="aventureros" id="aventureros" required>
+                <input type="number" class="form-control" name="col-xs-12" id="aventureros" required>
               </div>
 
               <button type="button" id="comenzar" class="btn btn-default">Enviar</button>
@@ -140,7 +150,9 @@
     </div>
 
     <div class="row">
-      <div class="col-md-12" id="RESULTADO_DE_VUELOS"></div>
+      <div class="col-md-11" id="RESULTADO_DE_VUELOS"></div>
+      <div class="col-md-1"><button type='button' name='otrovuelo' id='otrovuelo' value='0' class='btn btn-default'>Quiero otro!</button></div>
+      
     </div>
   </div>
 

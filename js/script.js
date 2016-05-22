@@ -2,6 +2,8 @@ $(document).ready(function(){
     $('#submitReg').click(compruebaReg);
     $('#submitLog').click(compruebaLog);
     $('#comenzar').click(buscarVuelos);
+    $('#otrovuelo').click(buscarVuelos);
+
 });
 
 /*FUNCION PARA REGISTRARSE {*/
@@ -13,7 +15,6 @@ window.smartsupp||(function(d) {
   c.type='text/javascript';c.charset='utf-8';c.async=true;
   c.src='//www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
 })(document);
-
 /*}*/
 
 function crearCuenta(){
@@ -183,22 +184,49 @@ function cambiafrase() {
 }
 /*}*/
 
+
+function restaFechas(f1,f2)
+ {
+ var aFecha1 = f1.split('-'); 
+ var aFecha2 = f2.split('-'); 
+ var fFecha1 = Date.UTC(aFecha1[0],aFecha1[1]-1,aFecha1[2]); 
+ var fFecha2 = Date.UTC(aFecha2[0],aFecha2[1]-1,aFecha2[2]); 
+ var dif = fFecha2 - fFecha1;
+ var dias = Math.floor(dif / (1000 * 60 * 60 * 24)); 
+ return dias;
+ }
+
+
+
+
 /*FUNCION PARA BUSCAR VUELOS {*/
 function buscarVuelos(){
   var origen = $('#origen').val();
   var pvp = $('#rangevalue').val();
-  
+  var fecha_salida = $('#fecha_salida').val();
+  var fecha_vuelta = $('#fecha_vuelta').val(); 
+  var aventureros = $('#aventureros').val();
+  var otro = $('#otrovuelo').val();
+  var dias = restaFechas(fecha_salida, fecha_vuelta);
+
   var peticion = $.ajax({
   url:  'http://127.0.0.1/PROYECTOV2/php/vuelos.php?nocache='+Math.random(),
   type: 'POST',
   asnc: true,
   data: 'origen='+encodeURIComponent(origen) +
-        '&pvp='+encodeURIComponent(pvp),
+        '&pvp='+encodeURIComponent(pvp) +
+        '&fecha_salida='+encodeURIComponent(fecha_salida) +
+        '&fecha_vuelta='+encodeURIComponent(fecha_vuelta) +
+        '&aventureros='+encodeURIComponent(aventureros) +
+        '&otro='+encodeURIComponent(otro) +
+        '&dias='+encodeURIComponent(dias),
+        
   success: function(){
     $("#RESULTADO_DE_VUELOS").fadeIn(500);
     $("#RESULTADO_DE_VUELOS").slideUp(300);
     $("#RESULTADO_DE_VUELOS").slideDown(500);
     $("#RESULTADO_DE_VUELOS").html(peticion.responseText);
+    document.getElementById('otrovuelo').value='1';
     },
     error: function(){alert('Se produjo un error inesperado');}
     });
