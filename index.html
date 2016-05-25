@@ -112,32 +112,32 @@
                 <label for="origen">Presupuesto inicial:</label>
                 <div id="slider">
                       <div class="col-md-8">
-                        <input class="bar" type="range" id="rangeinput" value="50" min="0" max="3000" onchange="rangevalue.value=value" />
+                        <input class="bar" type="range" id="rangeinput" value="1500" min="0" max="3000" onchange="rangevalue.value=value" />
                       </div>
                       <div class="col-md-4">
-                        <output id="rangevalue">50</output>
+                        <output id="rangevalue">1500</output>
                       </div>
                     </div>
               </div>
 
               <div class="form-group" id="form-group-origen">
                 <label for="origen">Origen:</label>
-                <input type="text" class="form-control" name="origen" id="origen" placeholder="Ej; Madrid" required>
+                <input value="Madrid" type="text" class="form-control" name="origen" id="origen" placeholder="Ej; Madrid" required>
               </div>
 
               <div class="form-group" id="form-group-fecha_salida">
                 <label for="fecha_salida">Fecha de salida:</label>
-                <input type="date" class="form-control" name="fecha_salida" id="fecha_salida" required>
+                <input value="2016-02-02" type="date" class="form-control" name="fecha_salida" id="fecha_salida" required>
               </div>
 
               <div class="form-group" id="form-group-fecha_vuelta">
                 <label for="fecha_vuelta">Fecha de vuelta:</label>
-                <input type="date" class="form-control" name="fecha_vuelta" id="fecha_vuelta" required>
+                <input value="2016-02-24" type="date" class="form-control" name="fecha_vuelta" id="fecha_vuelta" required>
               </div>
 
               <div class="form-group" id="form-group-avenureros">
                 <label for="origen">Numero de aventureros:</label>
-                <input type="number" class="form-control" name="col-xs-12" id="aventureros" required>
+                <input value="3" type="number" class="form-control" name="col-xs-12" id="aventureros" required>
               </div>
 
               <button type="button" id="comenzar" class="btn btn-default">Enviar</button>
