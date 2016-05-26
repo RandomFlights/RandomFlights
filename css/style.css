@@ -40,19 +40,23 @@
 .frases {
     background-image: url('../media/img/FondoDivFrases.png');
     background-repeat: no-repeat;
-    height: 300px;
-    padding: 20px 105px 20px 20px;
+    height: 360px;
+    padding: 70px 105px 20px 90px;
 }
 
 .bienvenida {
     background-repeat: no-repeat;
     background-image: url('../media/img/FondoDivComenzar.png');
-    height: 300px;
+    height: 360px;
+    padding: 50px 105px 20px 90px;
 }
 
 .formulario {
     visibility: hidden; 
-    background-color: white;
+    background-repeat: no-repeat;
+    background-image: url('../media/img/formulario.png');
+    padding: 50px 0px 20px 0px;
+    margin-left: 10px;
 }
 
 /*video*/
@@ -149,12 +153,12 @@ ul {
     #login { display: none; }
     #LOGEADO { display: none; }
     html { font-size:0.1em; }
-    #frase { font-size: 27px; }
+    .frase { font-size: 27px; }
 }
 
 /*botones*/
 .botoncomenzar {
-    width: 130px;
+    width: 160px;
 }
 
 .vuelos {

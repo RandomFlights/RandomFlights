@@ -152,10 +152,12 @@ function ocultaLogin() {
 
 /*FUNCION PARA CAMBIAR LA FOTO DEL BOTON COMENZAR {*/
 function cambiaFoto() {
-  document.getElementById("botoncomenzar").src="./media/img/botoncomenzar.png";
+  document.getElementById("botoncomenzar").src="./media/img/botoncomenzar0.png";
+  //document.getElementById("botoncomenzar").style.width="145px";
 }
 function cambiaFotoOut() {
   document.getElementById("botoncomenzar").src="./media/img/botoncomenzar1.png";
+  //document.getElementById("botoncomenzar").style.width="130px";
 }
 /*}*/
 
@@ -206,7 +208,6 @@ function buscarVuelos(){
   var fecha_salida = $('#fecha_salida').val();
   var fecha_vuelta = $('#fecha_vuelta').val(); 
   var aventureros = $('#aventureros').val();
-  var otro = $('#otrovuelo').val();
   var dias = restaFechas(fecha_salida, fecha_vuelta);
 
   var peticion = $.ajax({
@@ -218,7 +219,6 @@ function buscarVuelos(){
         '&fecha_salida='+encodeURIComponent(fecha_salida) +
         '&fecha_vuelta='+encodeURIComponent(fecha_vuelta) +
         '&aventureros='+encodeURIComponent(aventureros) +
-        '&otro='+encodeURIComponent(otro) +
         '&dias='+encodeURIComponent(dias),
         
   success: function(){
@@ -226,7 +226,6 @@ function buscarVuelos(){
     $("#RESULTADO_DE_VUELOS").slideUp(300);
     $("#RESULTADO_DE_VUELOS").slideDown(500);
     $("#RESULTADO_DE_VUELOS").html(peticion.responseText);
-    document.getElementById('otrovuelo').value='1';
     },
     error: function(){alert('Se produjo un error inesperado');}
     });

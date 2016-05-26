@@ -27,7 +27,7 @@
   <script src="./js/jquery-latest.js" type="text/javascript"></script>
 
 
-<body onLoad="setInterval('cambiafrase()', 9000)">
+<body onLoad="setInterval('cambiafrase()', 5000)">
 
   <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -43,8 +43,8 @@
               <input onchange="mandaValor('passwd')" type="password" class="form-control" name="passwd" id="passwd" placeholder="Password" required>
             </div> 
           <div class="centered">
-            <p>¿Eres nuevo?<a href="./paginas/login.html">Regístrate</a></p>
-            <button type="button" id="submitLog" class="btn btn-primary">Entrar</button>
+            <p>¿Eres nuevo?<a href="./paginas/login.html"> Regístrate</a></p>
+            <button type="button" id="submitLog" class="btn btn-warning">Entrar</button>
           </div>
         </form>
       </div>
@@ -69,7 +69,7 @@
             <ul class="nav navbar-nav">
               <li><a href="index.html">Inicio</a></li>
               <li><a href="paginas/login.html">Identificate</a></li>
-              <li><a href="#">Reservas</a></li>
+              <li><a href="paginas/reservas.html">Reservas</a></li>
               <li><a href="paginas/contacta.html">Contacta</a></li>
               <li><a href="paginas/quienes_somos.html">¿Quienes somos?</a></li>
             </ul>
@@ -91,67 +91,76 @@
         <h2 id="frase">"El mundo es un libro, y aquellos que no viajan leen solo una página." -San Agustín.</h2>
       </div>
 
-      <div class="col-md-1 col-xs-12"></div>
 
-      <div class="bienvenida col-md-5 col-xs-12">
+
+      <div class="bienvenida col-md-6 col-xs-12">
           <h3>Bienvenidos/as a Random Flights!</h3>
           <h4>Nos encargamos de buscarte un vuelo sorpresa a partir de tus disponibilidades.</h4>
           <div class="centered">
             <h3>¿Te atreves?</h3>
-            <input type="image" src="./media/img/botoncomenzar11.png" class="botoncomenzar" id="botoncomenzar" onclick="mostarForm()" onmouseover="cambiaFoto()" onmouseout="cambiaFotoOut()">  
+            <input type="image" src="./media/img/botoncomenzar1.png" class="botoncomenzar" id="botoncomenzar" onclick="mostarForm()" onmouseover="cambiaFoto()" onmouseout="cambiaFotoOut()">  
           </div>    
       </div>
     </div>
 
     <div class="formulario" id="formulario">
       <div class="row">
-        <form role="form" action="" method="post">
-          <div class="col-md-2"></div>
-            <div class="col-md-8">
-              <div class="form-group" id="form-group-presupuesto">
-                <label for="origen">Presupuesto inicial:</label>
-                <div id="slider">
-                      <div class="col-md-8">
-                        <input class="bar" type="range" id="rangeinput" value="1500" min="0" max="3000" onchange="rangevalue.value=value" />
-                      </div>
-                      <div class="col-md-4">
-                        <output id="rangevalue">1500</output>
-                      </div>
-                    </div>
-              </div>
-
-              <div class="form-group" id="form-group-origen">
-                <label for="origen">Origen:</label>
-                <input value="Madrid" type="text" class="form-control" name="origen" id="origen" placeholder="Ej; Madrid" required>
-              </div>
-
-              <div class="form-group" id="form-group-fecha_salida">
-                <label for="fecha_salida">Fecha de salida:</label>
-                <input value="2016-02-02" type="date" class="form-control" name="fecha_salida" id="fecha_salida" required>
-              </div>
-
-              <div class="form-group" id="form-group-fecha_vuelta">
-                <label for="fecha_vuelta">Fecha de vuelta:</label>
-                <input value="2016-02-24" type="date" class="form-control" name="fecha_vuelta" id="fecha_vuelta" required>
-              </div>
-
-              <div class="form-group" id="form-group-avenureros">
-                <label for="origen">Numero de aventureros:</label>
-                <input value="3" type="number" class="form-control" name="col-xs-12" id="aventureros" required>
-              </div>
-
-              <button type="button" id="comenzar" class="btn btn-default">Enviar</button>
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+          <p>dsadsadsadsaddsadsadsa dsaddsadsadsadsaddsadsads adsaddsadsadsadsaddsadsadsadsaddsa dsadsadsaddsadsadsads addsadsad sads addsadsadsadsadd sadsadsadsaddsadsadsadsaddsads adsadsaddsadsad sadsaddsadsadsadsa ddsadsadsadsaddsads adsadsadd sadsadsadsadd sadsa dsad sadd adsadsads addsadsadsa dsaddsads adsad saddsad sadsa ddsadsadsadsad
+          </p>
+        </div>
+        <div class="col-md-7">
+          <form role="form" action="" method="post">
+            
               
-              
-            </div>
-          <div class="col-md-2"></div>
-        </form>
+                <div class="form-group" id="form-group-presupuesto">
+                  <label for="origen">¿Cuánto quieres gastarte?</label>
+                  <div id="slider">
+                        <div class="col-md-8">
+                          <input class="bar" type="range" id="rangeinput" value="1500" min="0" max="3000" onchange="rangevalue.value=value" />
+                        </div>
+                        <div class="col-md-4">
+                          <output id="rangevalue">1500</output>
+                        </div>
+                      </div>
+                </div>
+
+                <div class="form-group" id="form-group-origen">
+                  <label for="origen">¿Desde dónde vas a emprender tu aventura?</label>
+                  <input value="Madrid" type="text" class="form-control" name="origen" id="origen" placeholder="Ej; Madrid" required>
+                </div>
+
+                <div class="form-group" id="form-group-fecha_salida">
+                  <label for="fecha_salida">¿Cuándo quieres irte?</label>
+                  <input value="2016-02-02" type="date" class="form-control" name="fecha_salida" id="fecha_salida" required>
+                </div>
+
+                <div class="form-group" id="form-group-fecha_vuelta">
+                  <label for="fecha_vuelta">¿Y cuando piensas volver?</label>
+                  <input value="2016-02-06" type="date" class="form-control" name="fecha_vuelta" id="fecha_vuelta" required>
+                </div>
+
+                <div class="form-group" id="form-group-avenureros">
+                  <label for="origen">¿Cuántos aventureros sois?</label>
+                  <input value="3" type="number" class="form-control" name="col-xs-12" id="aventureros" required>
+                </div>
+                <div class="row">
+                  <div class="col-md-4"></div>
+                  <div class="col-md-4">
+                    <button type="button" id="comenzar" class="btn btn-primary btn-lg">¡Encuéntralo!</button>
+                  </div>
+                  <div class="col-md-4"></div>
+                </div> 
+          </form>
+        </div>
+        <div class="col-md-1"></div>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-11" id="RESULTADO_DE_VUELOS"></div>
-      <div class="col-md-1"><button type='button' name='otrovuelo' id='otrovuelo' value='0' class='btn btn-default'>Quiero otro!</button></div>
+      <div class="col-md-1"><button type='button' name='otrovuelo' id='otrovuelo' class='btn btn-default'>Quiero otro!</button></div>
       
     </div>
   </div>
