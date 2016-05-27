@@ -2,7 +2,7 @@
 	
 	
  	include("funciones.php");
-    $bbdd = 'bd_viajes'; 
+    $bbdd = 'randomflights'; 
     $conexion = conexion($bbdd);
 
     $origen = $_POST['origen'];
@@ -32,7 +32,7 @@
                 echo "<h3>No hay vuelos disponibles</h3>.";
                 mysql_close($conexion);
             } else {
-            	array_push($vuelos_ida, $fila['cia']." ".$fila['origen']." ".$fila['destino']." ".$fila['fecha']." ".$fila['salida']." ".$fila['precio']." ".$fila['imagen']);
+            	array_push($vuelos_ida, $fila['cia']." ".$fila['origen']." ".$fila['destino']." ".$fila['fecha']." ".$fila['salida']." ".$fila['precio']." ".$fila['imagen']." ".$fila['id_vuelo']);
             }
         }
         
@@ -42,8 +42,10 @@
         $elegido = $vuelos_ida[$ale];
         
 
-        $pvp_ida = explode(" ",$elegido);
-        $pvp_ida = $pvp_ida[5]; 
+        $fila_ida = explode(" ",$elegido);
+        $pvp_ida = $fila_ida[5]; 
+        $imagen_ida = $fila_ida[6]; 
+        $id_ida = $fila_ida[7]; 
 // echo $pvp_ida."pvp ida</br>";
         $resto = $pvp_persona - $pvp_ida; //es lo que nos quedaria despues de haber gastado en el vuelo
 // echo $resto."resto: pvp_persona - la ida</br>";
@@ -60,7 +62,7 @@
                 echo "<h3>No hay vuelos disponibles</h3>.";
                 mysql_close($conexion);
             } else {
-                array_push($vuelos_vuelta, $fila['cia']." ".$fila['origen']." ".$fila['destino']." ".$fila['fecha']." ".$fila['salida']." ".$fila['precio']." ".$fila['imagen']);
+                array_push($vuelos_vuelta, $fila['cia']." ".$fila['origen']." ".$fila['destino']." ".$fila['fecha']." ".$fila['salida']." ".$fila['precio']." ".$fila['imagen']." ".$fila['id_vuelo']);
                 
             }
         }
@@ -71,8 +73,10 @@
         $elegido = $vuelos_vuelta[$ale];
         
 
-        $pvp_vuelta = explode(" ",$elegido);
-        $pvp_vuelta = $pvp_vuelta[5]; 
+        $fila_vuelta = explode(" ",$elegido);
+        $pvp_vuelta = $fila_vuelta[5]; 
+        $imagen_vuelta = $fila_vuelta[6];
+        $id_vuelta = $fila_vuelta[7];
 // echo $pvp_vuelta."pvp vuelta</br>";
         $resto = $resto - $pvp_vuelta; 
 // echo $resto."resto menos pvp vuelta</br>";
@@ -86,7 +90,7 @@
                 echo "<h3>No hay vuelos disponibles</h3>.";
                 mysql_close($conexion);
             } else {
-                array_push($hoteles, $fila['nombre']." ".$fila['ciudad']." ".$fila['direccion']." ".$fila['precio']." ".$fila['imagen']);
+                array_push($hoteles, $fila['nombre']." ".$fila['ciudad']." ".$fila['direccion']." ".$fila['precio']." ".$fila['imagen']." ".$fila['id']);
             }
         }
 
@@ -97,8 +101,12 @@
 // echo print_r($hoteles);
         $hotel = $hoteles[$ale];
 // echo $hotel."</br>";
-        $habitacion = explode(" ",$hotel);
-        $habitacion = $habitacion[3];
+        $fila_habitacion = explode(" ",$hotel);
+        $habitacion = $fila_habitacion[3];
+        $imagen_hotel = $fila_habitacion[4];
+        $nombre_hotel = $fila_habitacion[0];
+        $direccion_hotel = $fila_habitacion[2];
+        $id_hotel = $fila_habitacion[5];
 // echo $habitacion."pvp habitacion</br>";
         $pvp_habitacion = $habitacion * $dias;
 // echo $dias."dias </br>";
@@ -107,8 +115,27 @@
         //precio final del paquete
         $pvp_final = $pvp_ida + $pvp_vuelta + $pvp_habitacion;
 
-        echo "ida: ".$pvp_ida." vuelta: ".$pvp_vuelta." h0tel: ".$pvp_habitacion." final: ".$pvp_final;
 
-
+        echo "
+            <div class='row'>
+              <div class='col-md-12'>Imagen del destino</div>
+            </div>
+            <div class='row'>
+              <div class='col-md-10'>Vuelo ida</div><div class='col-md-2'>".$imagen_ida."</div>
+            </div>
+            <div class='row'>
+              <div class='col-md-10'>".$nombre_hotel."</br>".$direccion_hotel."</div><div class='col-md-2'>".$imagen_hotel."</div>
+            </div>
+            <div class='row'>
+              <div class='col-md-10'>Vuelo vuelta</div><div class='col-md-2'>".$imagen_vuelta."</div>
+            </div>
+            <div class='row'>
+              <div class='col-md-10'><button type='button' id='reserva' onclick='reservar()' class='btn btn-success btn-lg'>Resérvalo ya!</button></div><div class='col-md-2'>".$pvp_final."</div>
+            </div>
+            <input type='hidden' id='ida' name='ida' value='".$id_ida."'>
+            <input type='hidden' id='vuelta' name='vuelta' value='".$id_vuelta."'>
+            <input type='hidden' id='hotel' name='hotel' value='".$id_hotel."'>
+            <input type='hidden' id='pvp_final' name='pvp_final' value='".$pvp_final."'>
+        ";
 
 ?>

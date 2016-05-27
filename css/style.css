@@ -167,3 +167,5 @@ ul {
 }
 
 #RESULTADO_DE_VUELOS { background-color: white; }
+
+#alerta { visibility: hidden; }

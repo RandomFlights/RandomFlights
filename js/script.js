@@ -1,8 +1,10 @@
 $(document).ready(function(){
+    $(document).ready(sesion);
     $('#submitReg').click(compruebaReg);
     $('#submitLog').click(compruebaLog);
     $('#comenzar').click(buscarVuelos);
     $('#otrovuelo').click(buscarVuelos);
+    $('#otrovuelo').click(reservar);
 
 });
 
@@ -232,3 +234,55 @@ function buscarVuelos(){
 }
 /*}*/
 
+/*FUNCION PARA RESERVAR VUELOS {*/
+function reservar() {
+  var mensaje = "";
+  if(sessionStorage.usuario != "") {
+    var ida = $('#ida').val();
+    var vuelta = $('#vuelta').val();
+    var hotel = $('#hotel').val();
+    var pvp_final = $('#pvp_final').val(); 
+    var user = sessionStorage.usuario;
+
+    var peticion = $.ajax({
+    url:  'http://127.0.0.1/PROYECTOV2/php/reservar.php?nocache='+Math.random(),
+    type: 'POST',
+    asnc: true,
+    data: 'ida='+encodeURIComponent(ida) +
+          '&vuelta='+encodeURIComponent(vuelta) +
+          '&hotel='+encodeURIComponent(hotel) +
+          '&user='+encodeURIComponent(user) +
+          '&pvp_final='+encodeURIComponent(pvp_final),
+          
+    success: function(){
+      var ok = peticion.responseText;
+      if(ok=="true") {
+        mensaje = "<p>Su vuelo se ha guardado con éxito. Puede ver los detalles en <a href='./paginas/reservas.html'>Reservas</a></p>";
+        $("#alerta").html(mensaje);
+        $("#alerta").removeClass("alert-danger");
+        $("#alerta").addClass("alert-success");
+      } else {
+        mensaje = "<p>Ha ocurrido un error al reservar su vuelo.</p>";
+        $("#alerta").html(mensaje);
+        $("#alerta").addClass("alert-danger");
+      }
+     
+      document.getElementById("alerta").style.visibility="visible";
+      },
+      error: function(){alert('Se produjo un error inesperado');}
+      });
+  } else {
+    mensaje = "<p>Ups! Para reservar un vuelo debes estar registrado. No pierdas mas tiempo, <a href='./paginas/login.html'>inicia sesión</a></p>";
+    document.getElementById("alerta").innerHTML=mensaje;
+    document.getElementById("alerta").className+=" alert-danger";
+    document.getElementById("alerta").style.visibility="visible";
+  } 
+}
+/*}*/
+
+/*FUNCION PARA MANTENER LA SESION EN BLANCO*/
+function sesion() {
+  if(sessionStorage.usuario == undefined)
+    sessionStorage.usuario = "";
+}
+/**/
