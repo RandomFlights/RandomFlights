@@ -280,6 +280,22 @@ function reservar() {
 }
 /*}*/
 
+/*FUNCION PARA MOSTRAR RESERVAS {*/
+function muestrareservas(){
+
+  var peticion = $.ajax({
+  url:  'http://127.0.0.1/PROYECTOV2/php/muestrareservas.php?nocache='+Math.random(),
+  type: 'POST',
+  asnc: true,
+        
+  success: function(){
+    $("#RESERVAS").html(peticion.responseText);
+    },
+    error: function(){alert('Se produjo un error inesperado');}
+    });
+}
+/*}*/
+
 /*FUNCION PARA MANTENER LA SESION EN BLANCO*/
 function sesion() {
   if(sessionStorage.usuario == undefined)
