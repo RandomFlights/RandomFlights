@@ -17,6 +17,7 @@
     margin: 5px;
 }
 
+/* No se para que sirve { */
 .navbar-fixed-top .nav {
     padding: 15px 0;
 }
@@ -34,6 +35,7 @@
         padding: 15px 0;
     }
 }
+/* } */
 /*fin cabecera*/
 
 /*contenedor*/
@@ -49,6 +51,17 @@
     background-image: url('../media/img/FondoDivComenzar.png');
     height: 360px;
     padding: 50px 105px 20px 90px;
+}
+
+/*Para movil*/
+@media only screen and (max-width : 450px) {
+    #login { display: none; }
+    #LOGEADO { display: none; }
+    html { font-size:0.2em; }
+    .frases { padding: 45px 35px 0px 50px;}
+    .bienvenida { padding: 40px 35px 0px 50px;}
+    .sobreNos, .enlacesInt { display: none; }
+    #social { margin: 0; padding: 0; }
 }
 
 .formulario {
@@ -148,13 +161,7 @@ ul {
     background-repeat: no-repeat;
     visibility: hidden;
 }
-/*Para movil*/
-@media only screen and (max-width : 400px) {
-    #login { display: none; }
-    #LOGEADO { display: none; }
-    html { font-size:0.1em; }
-    .frase { font-size: 27px; }
-}
+
 
 /*botones*/
 .botoncomenzar {
@@ -168,4 +175,4 @@ ul {
 
 #RESULTADO_DE_VUELOS { background-color: white; }
 
-#alerta { visibility: hidden; }
+#alerta { visibility: hidden; margin-top: 20px; }

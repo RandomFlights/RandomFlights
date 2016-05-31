@@ -27,7 +27,7 @@
   <script src="./js/jquery-latest.js" type="text/javascript"></script>
 
 
-<body onLoad="setInterval('cambiafrase()', 5000)">
+<body onLoad="setInterval('cambiafrase()', 5000), loginSession()">
 
   <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -67,11 +67,11 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li><a href="index.html">Inicio</a></li>
-              <li><a href="paginas/login.html">Identificate</a></li>
-              <li><a href="paginas/reservas.html">Reservas</a></li>
-              <li><a href="paginas/contacta.html">Contacta</a></li>
-              <li><a href="paginas/quienes_somos.html">¿Quienes somos?</a></li>
+              <li><a href="index.html"><i class="fa fa-home" aria-hidden="true"> </i> Inicio</a></li>
+              <li><a href="paginas/login.html"><i class="fa fa-user" aria-hidden="true"> </i> Identificate</a></li>
+              <li><a href="paginas/reservas.html"><i class="fa fa-rocket" aria-hidden="true"> </i> Reservas</a></li>
+              <li><a href="paginas/contacta.html"><i class="fa fa-envelope" aria-hidden="true"> </i> Contacta</a></li>
+              <li><a href="paginas/quienes_somos.html"><i class="fa fa-question" aria-hidden="true"> </i> ¿Quienes somos?</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -112,46 +112,44 @@
         </div>
         <div class="col-md-7">
           <form role="form" action="" method="post">
-            
-              
-                <div class="form-group" id="form-group-presupuesto">
-                  <label for="origen">¿Cuánto quieres gastarte?</label>
-                  <div id="slider">
-                        <div class="col-md-8">
-                          <input class="bar" type="range" id="rangeinput" value="1500" min="0" max="3000" onchange="rangevalue.value=value" />
-                        </div>
-                        <div class="col-md-4">
-                          <output id="rangevalue">1500</output>
-                        </div>
-                      </div>
-                </div>
-
-                <div class="form-group" id="form-group-origen">
-                  <label for="origen">¿Desde dónde vas a emprender tu aventura?</label>
-                  <input value="Madrid" type="text" class="form-control" name="origen" id="origen" placeholder="Ej; Madrid" required>
-                </div>
-
-                <div class="form-group" id="form-group-fecha_salida">
-                  <label for="fecha_salida">¿Cuándo quieres irte?</label>
-                  <input value="2016-02-02" type="date" class="form-control" name="fecha_salida" id="fecha_salida" required>
-                </div>
-
-                <div class="form-group" id="form-group-fecha_vuelta">
-                  <label for="fecha_vuelta">¿Y cuando piensas volver?</label>
-                  <input value="2016-02-06" type="date" class="form-control" name="fecha_vuelta" id="fecha_vuelta" required>
-                </div>
-
-                <div class="form-group" id="form-group-avenureros">
-                  <label for="origen">¿Cuántos aventureros sois?</label>
-                  <input value="3" type="number" class="form-control" name="col-xs-12" id="aventureros" required>
-                </div>
-                <div class="row">
-                  <div class="col-md-4"></div>
-                  <div class="col-md-4">
-                    <button type="button" id="comenzar" class="btn btn-primary btn-lg">¡Encuéntralo!</button>
+            <div class="form-group" id="form-group-presupuesto">
+              <label for="origen">¿Cuánto quieres gastarte?</label>
+              <div id="slider">
+                    <div class="col-md-8">
+                      <input class="bar" type="range" id="rangeinput" value="1500" min="0" max="3000" onchange="rangevalue.value=value" />
+                    </div>
+                    <div class="col-md-4">
+                      <output id="rangevalue">1500</output>
+                    </div>
                   </div>
-                  <div class="col-md-4"></div>
-                </div> 
+            </div>
+
+            <div class="form-group" id="form-group-origen">
+              <label for="origen">¿Desde dónde vas a emprender tu aventura?</label>
+              <input value="Madrid" type="text" class="form-control" name="origen" id="origen" placeholder="Ej; Madrid" required>
+            </div>
+
+            <div class="form-group" id="form-group-fecha_salida">
+              <label for="fecha_salida">¿Cuándo quieres irte?</label>
+              <input value="2016-02-02" type="date" class="form-control" name="fecha_salida" id="fecha_salida" required>
+            </div>
+
+            <div class="form-group" id="form-group-fecha_vuelta">
+              <label for="fecha_vuelta">¿Y cuando piensas volver?</label>
+              <input value="2016-02-06" type="date" class="form-control" name="fecha_vuelta" id="fecha_vuelta" required>
+            </div>
+
+            <div class="form-group" id="form-group-avenureros">
+              <label for="origen">¿Cuántos aventureros sois?</label>
+              <input value="3" type="number" class="form-control" name="col-xs-12" id="aventureros" required>
+            </div>
+            <div class="row">
+              <div class="col-md-4"></div>
+              <div class="col-md-4">
+                <button type="button" id="comenzar" class="btn btn-primary btn-lg">¡Encuéntralo!</button>
+              </div>
+              <div class="col-md-4"></div>
+            </div> 
           </form>
         </div>
         <div class="col-md-1"></div>
@@ -159,12 +157,16 @@
     </div>
 
     <div class="row">
-      <div id="alerta" class="alert "></div>
+      <div class="col-md-12">
+          <div id="alerta" class="alert centered"></div>
+      </div>
+    </div>
+
+    <div class="row">
       <div class="col-md-12" id="RESULTADO_DE_VUELOS"></div>
-      <div id="RESERVAS"></div>
 
 
-      <button type='button' name='otrovuelo' id='otrovuelo' class='btn btn-default'>Quiero otro!</button></div>
+      <button type='button' name='otrovuelo' id='otrovuelo' class='btn btn-default'>Quiero otro!</button>
       
     </div>
   </div>
@@ -173,14 +175,14 @@
     <div class="footer navbar navbar-fixed-bottom">
       <div class="container">
         <div class="row">
-          <div class="col-md-4">
+          <div class="sobreNos col-md-4">
             <ul>
               <li><h3>Sobre nosotros</h3></li>
               <li><a href="#">¿Quienes somos?</a></li>
               <li><a href="#">Contacta con nosotros</a></li>
             </ul>
           </div>
-          <div class="col-md-4">
+          <div class="enlacesInt col-md-4">
             <ul>
               <li><h3>Enlaces de interés</h3></li>
               <li><a href="" target="blank">Términos generales</a></li>
@@ -188,7 +190,7 @@
               <li><a href="" target="blank">Uso de cookies</a></li>
             </ul>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 col-xs-10">
             <div id="social">
               <a href="https://facebook.com" target="blank"><i id="social-fb" class="fa fa-facebook-square fa-4x social"></i></a>
               <a href="https://twitter.com" target="blank"><i id="social-tw" class="fa fa-twitter-square fa-4x social"></i></a>

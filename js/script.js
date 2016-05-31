@@ -4,7 +4,6 @@ $(document).ready(function(){
     $('#submitLog').click(compruebaLog);
     $('#comenzar').click(buscarVuelos);
     $('#otrovuelo').click(buscarVuelos);
-    $('#otrovuelo').click(reservar);
 
 });
 
@@ -133,10 +132,11 @@ function cerrarSesion() {
 /*FUNCION PARA QUE APAREZCA EL LOGIN EN LAS SIGUIENTE PAGINAS CON SESSIONSTORAGE {*/
 function loginSession() {
     var user = sessionStorage.usuario;
-    
-    var pintado = "<h2>Bienvenido "+user+"</h2><a href='editaPerfil.html'>Editar Perfil</a> <input type='button' id='cerrarSesion' onclick='cerrarSesion()' value='Cerrar Sesion'>";
-    document.getElementById("LOGEADO").innerHTML = pintado;
-    document.getElementById("LOGEADO").style.visibility="visible";
+    if(user!="") {
+      var pintado = "<h2>Bienvenido "+user+"</h2><a href='editaPerfil.html'>Editar Perfil</a> <input type='button' id='cerrarSesion' onclick='cerrarSesion()' value='Cerrar Sesion'>";
+      document.getElementById("LOGEADO").innerHTML = pintado;
+      document.getElementById("LOGEADO").style.visibility="visible";
+    }
 }
 /*}*/
 
