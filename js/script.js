@@ -296,9 +296,26 @@ function muestrareservas(){
 }
 /*}*/
 
-/*FUNCION PARA MANTENER LA SESION EN BLANCO*/
+/*FUNCION PARA MANTENER LA SESION EN BLANCO {*/
 function sesion() {
   if(sessionStorage.usuario == undefined)
     sessionStorage.usuario = "";
 }
-/**/
+/*}*/
+
+/*Funcion para scroll automatico {*/
+$(function() {
+  $('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+/*}*/

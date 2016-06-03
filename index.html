@@ -98,10 +98,13 @@
           <h4>Nos encargamos de buscarte un vuelo sorpresa a partir de tus disponibilidades.</h4>
           <div class="centered">
             <h3>¿Te atreves?</h3>
-            <input type="image" src="./media/img/botoncomenzar1.png" class="botoncomenzar" id="botoncomenzar" onclick="mostarForm()" onmouseover="cambiaFoto()" onmouseout="cambiaFotoOut()">  
-          </div>    
+            <a href="#scroll"><input type="image" src="./media/img/botoncomenzar1.png" class="botoncomenzar" id="botoncomenzar" onclick="mostarForm()" onmouseover="cambiaFoto()" onmouseout="cambiaFotoOut()"></a>
+          </div>  
+          <div id="scroll"></div>  
       </div>
     </div>
+
+
 
     <div class="formulario" id="formulario">
       <div class="row">
@@ -146,7 +149,7 @@
             <div class="row">
               <div class="col-md-4"></div>
               <div class="col-md-4">
-                <button type="button" id="comenzar" class="btn btn-primary btn-lg">¡Encuéntralo!</button>
+                <a href="#RESULTADO_DE_VUELOS"><button type="button" id="comenzar" class="btn btn-primary btn-lg">¡Encuéntralo!</button></a>
               </div>
               <div class="col-md-4"></div>
             </div> 
@@ -163,14 +166,13 @@
     </div>
 
     <div class="row">
-      <div class="col-md-12" id="RESULTADO_DE_VUELOS"></div>
+      <div class="col-md-12 grad" id="RESULTADO_DE_VUELOS"></div>
 
 
       <button type='button' name='otrovuelo' id='otrovuelo' class='btn btn-default'>Quiero otro!</button>
       
     </div>
   </div>
-
   <footer>
     <div class="footer navbar navbar-fixed-bottom">
       <div class="container">

@@ -41,8 +41,11 @@
 
         $elegido = $vuelos_ida[$ale];
         
-
+//recogida de datos del vuelo de ida elegido
         $fila_ida = explode(" ",$elegido);
+        $compania_ida = $fila_ida[0];
+        $destino = $fila_ida[2];
+        $salida_ida = $fila_ida[4];
         $pvp_ida = $fila_ida[5]; 
         $imagen_ida = $fila_ida[6]; 
         $id_ida = $fila_ida[7]; 
@@ -72,8 +75,10 @@
 
         $elegido = $vuelos_vuelta[$ale];
         
-
+//recogida de datos para el vuelo de vuelta elegido
         $fila_vuelta = explode(" ",$elegido);
+        $compania_vuelta = $fila_vuelta[0];
+        $salida_vuelta = $fila_vuelta[4];
         $pvp_vuelta = $fila_vuelta[5]; 
         $imagen_vuelta = $fila_vuelta[6];
         $id_vuelta = $fila_vuelta[7];
@@ -102,10 +107,11 @@
         $hotel = $hoteles[$ale];
 // echo $hotel."</br>";
         $fila_habitacion = explode(" ",$hotel);
+        $nombre_hotel = $fila_habitacion[0];
+        $ciudad_hotel = $fila_habitacion[1];
+        $direccion_hotel = $fila_habitacion[2];
         $habitacion = $fila_habitacion[3];
         $imagen_hotel = $fila_habitacion[4];
-        $nombre_hotel = $fila_habitacion[0];
-        $direccion_hotel = $fila_habitacion[2];
         $id_hotel = $fila_habitacion[5];
 // echo $habitacion."pvp habitacion</br>";
         $pvp_habitacion = $habitacion * $dias;
@@ -115,22 +121,65 @@
         //precio final del paquete
         $pvp_final = $pvp_ida + $pvp_vuelta + $pvp_habitacion;
 
+        $fotoDestino = "";
+        switch ($destino) {
+            case "Barcelona":
+                $fotoDestino = "./media/img/destinos/Barcelona.png";
+                break;
+            case "Berlin":
+                $fotoDestino = "./media/img/destinos/Berlin.png";
+                break;
+            case "Londres":
+                $fotoDestino = "./media/img/destinos/Londres.png";
+                break;
+            case "Madrid":
+                $fotoDestino = "./media/img/destinos/Madrid.png";
+                break;
+            case "Paris":
+                $fotoDestino = "./media/img/destinos/Paris.png";
+                break;
+        }
+
 
         echo "
             <div class='row'>
-              <div class='col-md-12'>Imagen del destino</div>
+              <div class='col-md-12'><img src='".$fotoDestino."' alt='fotoDestino' class='imagenDestino'></div>
             </div>
+
             <div class='row'>
-              <div class='col-md-10'>Vuelo ida</div><div class='col-md-2'>".$imagen_ida."</div>
+              <div class='col-md-9 anchoResVuelos'>
+                <p>Pones rumbo a <span class='bolditalic'>".$destino."</span> con <span class='bolditalic'>".$compania_ida."</span></p>
+                <p></p>
+              </div>
+              <div class='col-md-1'></div>
+              <div class='col-md-2 bordeNaranja anchoResVuelos'><img src='".$imagen_ida."' alt='imagen_ida' class='imgResultVuelos'></div>
             </div>
+
             <div class='row'>
-              <div class='col-md-10'>".$nombre_hotel."</br>".$direccion_hotel."</div><div class='col-md-2'>".$imagen_hotel."</div>
+              <div class='col-md-9 anchoResVuelos'>
+                <p>Tu estancia será en <span class='bolditalic'>".$nombre_hotel."</span></br>".$direccion_hotel."</p>
+                <p></p>
+              </div>
+              <div class='col-md-1'>
+              </div><div class='col-md-2 bordeNaranja anchoResVuelos'>".$imagen_hotel."</div>
             </div>
+
             <div class='row'>
-              <div class='col-md-10'>Vuelo vuelta</div><div class='col-md-2'>".$imagen_vuelta."</div>
+              <div class='col-md-9 anchoResVuelos'>
+                <p>Te vuelves a <span class='bolditalic'>".$origen."</span> con <span class='bolditalic'>".$compania_vuelta."</span></p>
+                <p></p>
+              </div>
+              <div class='col-md-1'></div>
+              <div class='col-md-2 bordeNaranja anchoResVuelos'><img src='".$imagen_vuelta."' alt='imagen_vuelta' class='imgResultVuelos'></div>
             </div>
+
             <div class='row'>
-              <div class='col-md-10'><button type='button' id='reserva' onclick='reservar()' class='btn btn-success btn-lg'>Resérvalo ya!</button></div><div class='col-md-2'>".$pvp_final."</div>
+              <div class='col-md-9 bordeNaranja'></div><div class='col-md-2'></div>
+            </div>
+
+            <div class='row'>
+              <div class='col-md-8'><button type='button' id='reserva' onclick='reservar()' class='btn btn-success btn-lg'>Resérvalo ya!</button></div>
+              <div class='col-md-2 pvpFinal'>".$pvp_final."</div><div class='col-md-2'></div>
             </div>
             <input type='hidden' id='ida' name='ida' value='".$id_ida."'>
             <input type='hidden' id='vuelta' name='vuelta' value='".$id_vuelta."'>

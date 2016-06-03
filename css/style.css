@@ -173,6 +173,30 @@ ul {
     background-color: white;
 }
 
-#RESULTADO_DE_VUELOS { background-color: white; }
+#RESULTADO_DE_VUELOS { 
+    background-color: white;
+}
 
 #alerta { visibility: hidden; margin-top: 20px; }
+
+.bolditalic {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.imagenDestino, .imgResultVuelos {
+    height: auto;
+    max-width: 100%;
+}
+
+.bordeNaranja { border: 2px solid orange; }
+.anchoResVuelos { height: 150px; background-color: white; }
+.row { margin: 10px; }
+.pvpFinal { }
+
+.grad {
+    background: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, rgba(0,0,0,0), rgba(0,0,0,1)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1)); /* Standard syntax (must be last) */
+}
