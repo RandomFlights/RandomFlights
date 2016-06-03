@@ -1,7 +1,7 @@
 <?php
-	
-	
- 	include("funciones.php");
+    
+    
+    include("funciones.php");
     $bbdd = 'randomflights'; 
     $conexion = conexion($bbdd);
 
@@ -32,7 +32,7 @@
                 echo "<h3>No hay vuelos disponibles</h3>.";
                 mysql_close($conexion);
             } else {
-            	array_push($vuelos_ida, $fila['cia']." ".$fila['origen']." ".$fila['destino']." ".$fila['fecha']." ".$fila['salida']." ".$fila['precio']." ".$fila['imagen']." ".$fila['id_vuelo']);
+                array_push($vuelos_ida, $fila['cia']." ".$fila['origen']." ".$fila['destino']." ".$fila['fecha']." ".$fila['salida']." ".$fila['precio']." ".$fila['imagen']." ".$fila['id_vuelo']);
             }
         }
         
