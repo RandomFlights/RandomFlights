@@ -1,39 +1,45 @@
 <?php
+    header("Content-Type: text/html;charset=utf-8");
 	include("funciones.php");
     $bbdd = 'randomflights'; 
     $conexion = conexion($bbdd);
+    mysql_query("SET NAMES 'utf8'");
 
-
-    $consulta = mysql_query("SELECT * FROM reservas",$conexion);
+    $user = $_POST['user'];
+    $hoy = date('Y-m-d');
+    $con = 0;
+    $consulta = mysql_query("SELECT * FROM reservas WHERE email_user='$user' AND salida>='$hoy'",$conexion);
+    echo "<div class='row'>";
     while($fila = mysql_fetch_array($consulta)) {
         if($fila == 0) {
             echo "<h3>No hay vuelos disponibles</h3>.";
             mysql_close($conexion);
         } else {
-        	$id_reserva = $fila['id'];
-        	$id_ida = $fila['vuelo_ida'];
-        	$id_vuelta = $fila['vuelo_vuelta'];
-        	$id_hotel = $fila['hotel'];
+        	
+        	$ida = $fila['vuelo_ida'];
+        	$vuelta = $fila['vuelo_vuelta'];
+        	$hotel = $fila['hotel'];
         	$pvp_final = $fila['pvp_final'];
         	$email_user = $fila['email_user'];
+            $fecha_salida = $fila['salida'];
+            $fecha_llegada = $fila['llegada'];
+            $hora_llegada = $fila['hora_llegada'];
+            $hora_salida = $fila['hora_salida'];
+            $con++;
+
+            if ($con<4){
+                echo "
+              <div class='col-md-4'>dsadsad</div>
+                ";
+            }else{
+                echo "</div><div class='row'><div class='col-md-4'>dsdsada</div>";
+                $con=1;
+            }
+            
+
         }
     }
+    echo "</div>"
 
-    //Para el vuelo de ida
-    $consulta = mysql_query("SELECT * FROM vuelos WHERE id_vuelo='$id_ida'",$conexion);
-    $fila = mysql_fetch_array($consulta);
-    echo "<h3>Tu vuelo para la ida es:</h3>
-    <p>Vuelo: ".$fila['cia']." con origen en ".$fila['origen']." para el dia ".$fila['fecha']." a las ".$fila['salida']." con un precio de ".$fila['precio']."</p>";
-    //Para el vuelo de vuelta
-    $consulta = mysql_query("SELECT * FROM vuelos WHERE id_vuelo='$id_vuelta'",$conexion);
-    $fila = mysql_fetch_array($consulta);
-    echo "<h3>Tu vuelo para la vuelta es:</h3>
-    <p>Vuelo: ".$fila['cia']." con origen en ".$fila['origen']." para el dia ".$fila['fecha']." a las ".$fila['salida']." con un precio de ".$fila['precio']."</p>";
-    //Para el hotel
-    $consulta = mysql_query("SELECT * FROM hoteles WHERE id='$id_hotel'",$conexion);
-    $fila = mysql_fetch_array($consulta);
-    echo "<h3>Tu hotel:</h3>
-    <p>Hotel: ".$fila['nombre']." en ".$fila['ciudad']." direccion ".$fila['direccion']."</p>";
-
-    echo "<h1>Precio final $pvp_final</h1>";
+    
 ?>

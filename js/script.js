@@ -3,7 +3,6 @@ $(document).ready(function(){
     $('#submitReg').click(compruebaReg);
     $('#submitLog').click(compruebaLog);
     $('#comenzar').click(buscarVuelos);
-    $('#otrovuelo').click(buscarVuelos);
 
 });
 
@@ -155,11 +154,9 @@ function ocultaLogin() {
 /*FUNCION PARA CAMBIAR LA FOTO DEL BOTON COMENZAR {*/
 function cambiaFoto() {
   document.getElementById("botoncomenzar").src="./media/img/botoncomenzar0.png";
-  //document.getElementById("botoncomenzar").style.width="145px";
 }
 function cambiaFotoOut() {
   document.getElementById("botoncomenzar").src="./media/img/botoncomenzar1.png";
-  //document.getElementById("botoncomenzar").style.width="130px";
 }
 /*}*/
 
@@ -224,9 +221,7 @@ function buscarVuelos(){
         '&dias='+encodeURIComponent(dias),
         
   success: function(){
-    $("#RESULTADO_DE_VUELOS").fadeIn(500);
-    $("#RESULTADO_DE_VUELOS").slideUp(300);
-    $("#RESULTADO_DE_VUELOS").slideDown(500);
+    $("#RESULTADO_DE_VUELOS").slideDown(1000);
     $("#RESULTADO_DE_VUELOS").html(peticion.responseText);
     },
     error: function(){alert('Se produjo un error inesperado');}
@@ -241,7 +236,12 @@ function reservar() {
     var ida = $('#ida').val();
     var vuelta = $('#vuelta').val();
     var hotel = $('#hotel').val();
-    var pvp_final = $('#pvp_final').val(); 
+    var direccion_hotel = $('#direccion_hotel').val();
+    var pvp_final = $('#pvp_final').val();
+    var fecha_salida = $('#fecha_salida').val();
+    var fecha_vuelta = $('#fecha_vuelta').val(); 
+    var salida_ida = $('#salida_ida').val(); 
+    var salida_vuelta = $('#salida_vuelta').val(); 
     var user = sessionStorage.usuario;
 
     var peticion = $.ajax({
@@ -251,7 +251,12 @@ function reservar() {
     data: 'ida='+encodeURIComponent(ida) +
           '&vuelta='+encodeURIComponent(vuelta) +
           '&hotel='+encodeURIComponent(hotel) +
+          '&direccion_hotel='+encodeURIComponent(direccion_hotel) +
           '&user='+encodeURIComponent(user) +
+          '&fecha_salida='+encodeURIComponent(fecha_salida) +
+          '&fecha_vuelta='+encodeURIComponent(fecha_vuelta) +
+          '&salida_ida='+encodeURIComponent(salida_ida) +
+          '&salida_vuelta='+encodeURIComponent(salida_vuelta) +
           '&pvp_final='+encodeURIComponent(pvp_final),
           
     success: function(){
@@ -282,11 +287,12 @@ function reservar() {
 
 /*FUNCION PARA MOSTRAR RESERVAS {*/
 function muestrareservas(){
-
+  var user = sessionStorage.usuario;
   var peticion = $.ajax({
   url:  'http://127.0.0.1/PROYECTOV2/php/muestrareservas.php?nocache='+Math.random(),
   type: 'POST',
   asnc: true,
+  data: 'user='+encodeURIComponent(user),
         
   success: function(){
     $("#RESERVAS").html(peticion.responseText);

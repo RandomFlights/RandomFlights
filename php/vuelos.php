@@ -1,9 +1,11 @@
 <?php
     
-    
+    header("Content-Type: text/html;charset=utf-8");
     include("funciones.php");
     $bbdd = 'randomflights'; 
     $conexion = conexion($bbdd);
+    mysql_query("SET NAMES 'utf8'");
+
 
     $origen = $_POST['origen'];
     $pvp = $_POST['pvp'];
@@ -26,7 +28,7 @@
         
 
         //Para los viajes de ida
-        $consulta = mysql_query("SELECT * FROM vuelos WHERE origen='$origen' AND precio BETWEEN '0' AND '$pvp_paquete'",$conexion);
+        $consulta = mysql_query("SELECT * FROM vuelos WHERE origen='$origen' AND precio BETWEEN '0' AND '$pvp_paquete' AND fecha='$fecha_salida'",$conexion);
         while($fila = mysql_fetch_array($consulta)) {
             if($fila == 0) {
                 echo "<h3>No hay vuelos disponibles</h3>.";
@@ -59,7 +61,7 @@
         $vuelta = explode(" ",$elegido); //Estabamos pillando el $fila['destino'], pero vete tu asaber de donde, pillaba el ultimo, no el elegido del random.
         $vuelta = $vuelta[2]; 
 
-        $consulta = mysql_query("SELECT * FROM vuelos WHERE origen='$vuelta' AND destino='$origen' AND precio BETWEEN '0' AND '$resto_paquete'",$conexion);
+        $consulta = mysql_query("SELECT * FROM vuelos WHERE origen='$vuelta' AND destino='$origen' AND precio BETWEEN '0' AND '$resto_paquete' AND fecha='$fecha_vuelta'",$conexion);
         while($fila = mysql_fetch_array($consulta)) {
             if($fila == 0) {
                 echo "<h3>No hay vuelos disponibles</h3>.";
@@ -105,11 +107,15 @@
 // echo $ale."aleatorio de hoteles<br>";
 // echo print_r($hoteles);
         $hotel = $hoteles[$ale];
+//echo print_r($hotel)."</br>";
 // echo $hotel."</br>";
         $fila_habitacion = explode(" ",$hotel);
+//echo print_r($fila_habitacion)."</br>";
         $nombre_hotel = $fila_habitacion[0];
+        $nombre_hotel = str_replace("_"," ",$nombre_hotel);
         $ciudad_hotel = $fila_habitacion[1];
         $direccion_hotel = $fila_habitacion[2];
+        $direccion_hotel = str_replace("_"," ",$direccion_hotel);
         $habitacion = $fila_habitacion[3];
         $imagen_hotel = $fila_habitacion[4];
         $id_hotel = $fila_habitacion[5];
@@ -119,7 +125,7 @@
 // echo $pvp_habitacion."precio de habitacion por los dias que se  quede</br>";
 
         //precio final del paquete
-        $pvp_final = $pvp_ida + $pvp_vuelta + $pvp_habitacion;
+        $pvp_final = ($pvp_ida + $pvp_vuelta + $pvp_habitacion)*$aventureros    ;
 
         $fotoDestino = "";
         switch ($destino) {
@@ -148,8 +154,17 @@
 
             <div class='row'>
               <div class='col-md-9 anchoResVuelos'>
-                <p>Pones rumbo a <span class='bolditalic'>".$destino."</span> con <span class='bolditalic'>".$compania_ida."</span></p>
-                <p></p>
+                <div class='margenResVuelos'>
+                    <div class='col-md-10'>
+                        <h1>".$origen." <i class='fa fa-arrow-right' aria-hidden='true'></i> ".$destino."</h1>
+                        <h4><i class='fa fa-calendar' aria-hidden='true'></i> ".$fecha_salida." <i class='fa fa-clock-o' aria-hidden='true'></i> ".$salida_ida."</h4>
+                        <h4><i class='fa fa-plane' aria-hidden='true'></i> ".$compania_ida."</h4>
+                    </div>
+                    <div class='col-md-2'>
+                        <p class='pvpResVuelos kglife'>".$pvp_ida*$aventureros." €</p>
+                        <p class='pvpPerResVuelos'>".$pvp_ida." €/Per.</p>
+                    </div>
+                </div>
               </div>
               <div class='col-md-1'></div>
               <div class='col-md-2 bordeNaranja anchoResVuelos'><img src='".$imagen_ida."' alt='imagen_ida' class='imgResultVuelos'></div>
@@ -157,8 +172,17 @@
 
             <div class='row'>
               <div class='col-md-9 anchoResVuelos'>
-                <p>Tu estancia será en <span class='bolditalic'>".$nombre_hotel."</span></br>".$direccion_hotel."</p>
-                <p></p>
+                <div class='margenResVuelos'>
+                    <div class='col-md-10'>
+                        <h1>".$nombre_hotel."</h1>
+                        <h4><i class='fa fa-home' aria-hidden='true'></i> ".$direccion_hotel."</h4>
+                        <h4><i class='fa fa-building-o' aria-hidden='true'></i> ".$ciudad_hotel."</h4>
+                    </div>
+                    <div class='col-md-2'>
+                        <p class='pvpResVuelos kglife'>".$pvp_habitacion*$aventureros." €</p>
+                        <p class='pvpPerResVuelos'>".$pvp_habitacion." €/Per.</p>
+                    </div>
+                </div>
               </div>
               <div class='col-md-1'>
               </div><div class='col-md-2 bordeNaranja anchoResVuelos'>".$imagen_hotel."</div>
@@ -166,8 +190,17 @@
 
             <div class='row'>
               <div class='col-md-9 anchoResVuelos'>
-                <p>Te vuelves a <span class='bolditalic'>".$origen."</span> con <span class='bolditalic'>".$compania_vuelta."</span></p>
-                <p></p>
+                <div class='margenResVuelos'>
+                    <div class='col-md-10'>
+                        <h1>".$destino." <i class='fa fa-arrow-right' aria-hidden='true'></i> ".$origen."</h1>
+                        <h4><i class='fa fa-calendar' aria-hidden='true'></i> ".$fecha_vuelta." <i class='fa fa-clock-o' aria-hidden='true'></i> ".$salida_vuelta."</h4>
+                        <h4><i class='fa fa-plane' aria-hidden='true'></i> ".$compania_vuelta."</h4>
+                    </div>
+                    <div class='col-md-2'>
+                        <p class='pvpResVuelos kglife'>".$pvp_vuelta*$aventureros." €</p>
+                        <p class='pvpPerResVuelos'>".$pvp_vuelta." €/Per.</p>
+                    </div>
+                </div>
               </div>
               <div class='col-md-1'></div>
               <div class='col-md-2 bordeNaranja anchoResVuelos'><img src='".$imagen_vuelta."' alt='imagen_vuelta' class='imgResultVuelos'></div>
@@ -178,12 +211,23 @@
             </div>
 
             <div class='row'>
-              <div class='col-md-8'><button type='button' id='reserva' onclick='reservar()' class='btn btn-success btn-lg'>Resérvalo ya!</button></div>
-              <div class='col-md-2 pvpFinal'>".$pvp_final."</div><div class='col-md-2'></div>
+              <div class='col-md-5'><button type='button' id='reserva' onclick='reservar()' class='btn btn-primary btn-lg'>Resérvalo ya!</button> <button type='button' name='otrovuelo' id='otrovuelo' class='btn btn-warning btn-lg' onclick='buscarVuelos()'>Quiero otro!</button></div>
+              <div class='col-md-2 kglife'>Total: </div>
+              <div class='col-md-5'>
+                <div class='pvpFinal'>
+                    <p class='pvpFinalFinal'>".$pvp_final." €</p>
+                    <p class='pvpPerResVuelos'>".$pvp_final/$aventureros." €/Per.</p>
+                </div>
+              </div>
             </div>
-            <input type='hidden' id='ida' name='ida' value='".$id_ida."'>
-            <input type='hidden' id='vuelta' name='vuelta' value='".$id_vuelta."'>
-            <input type='hidden' id='hotel' name='hotel' value='".$id_hotel."'>
+            <input type='hidden' id='ida' name='ida' value='".$compania_ida."'>
+            <input type='hidden' id='vuelta' name='vuelta' value='".$compania_vuelta."'>
+            <input type='hidden' id='hotel' name='hotel' value='".$nombre_hotel."'>
+            <input type='hidden' id='direccion_hotel' name='direccion_hotel' value='".$direccion_hotel."'>
+            <input type='hidden' id='fecha_salida' name='fecha_salida' value='".$fecha_salida."'>
+            <input type='hidden' id='fecha_vuelta' name='fecha_vuelta' value='".$fecha_vuelta."'>
+            <input type='hidden' id='salida_ida' name='salida_ida' value='".$salida_ida."'>
+            <input type='hidden' id='salida_vuelta' name='salida_vuelta' value='".$salida_vuelta."'>
             <input type='hidden' id='pvp_final' name='pvp_final' value='".$pvp_final."'>
         ";
 
