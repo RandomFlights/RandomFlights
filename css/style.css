@@ -66,12 +66,10 @@
 
 /*Para movil*/
 @media only screen and (max-width : 450px) {
-    #login { display: none; }
-    #LOGEADO { display: none; }
     html { font-size:0.2em; }
     .frases { padding: 45px 35px 0px 50px;}
     .bienvenida { padding: 40px 35px 0px 50px;}
-    .sobreNos, .enlacesInt. #rallaLogin { display: none; }
+    .sobreNos, .enlacesInt. #rallaLogin, #login, #LOGEADO { display: none; }
     #social { margin: 0; padding: 0; }
 }
 
@@ -224,5 +222,16 @@ ul {
     max-width: 100%;
     height: 430px;
     background-size: 100% 100%;
+    -webkit-background-size: cover; 
+    -moz-background-size: cover; 
+    -o-background-size: cover;
     background-size: cover;
 }
+/*Mis reservas {*/
+.reserva { 
+    padding: 10px 0px 10px 0px;
+}
+.red { background-color: #AA2C2C;}
+.green { background-color: #48BB6E;}
+.oculto { display: none; }
+/*}*/

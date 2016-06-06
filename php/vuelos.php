@@ -211,7 +211,10 @@
             </div>
 
             <div class='row'>
-              <div class='col-md-5'><button type='button' id='reserva' onclick='reservar()' class='btn btn-primary btn-lg'>Resérvalo ya!</button> <button type='button' name='otrovuelo' id='otrovuelo' class='btn btn-warning btn-lg' onclick='buscarVuelos()'>Quiero otro!</button></div>
+              <div class='col-md-5'>
+                  <button type='button' id='reserva' onclick='reservar()' class='btn btn-primary btn-lg'>Resérvalo ya!</button>
+                  <a href='#RESULTADO_DE_VUELOS'><button type='button' name='otrovuelo' id='otrovuelo' class='btn btn-warning btn-lg' onclick='buscarVuelos()'>Quiero otro!</button></a>
+              </div>
               <div class='col-md-2 kglife'>Total: </div>
               <div class='col-md-5'>
                 <div class='pvpFinal'>

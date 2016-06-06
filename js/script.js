@@ -319,9 +319,17 @@ $(function() {
         $('html, body').animate({
           scrollTop: target.offset().top
         }, 1000);
-        return false;
+        return false; 
       }
     }
   });
 });
+/*}*/
+
+/*FUNCION PARA DESPLEGAR LA INFORMACION DE LAS RESERVAS {*/
+function masInfo(id){
+  var str = "#masinfo_"+id;
+  $(str).toggle(500);
+}
+
 /*}*/
