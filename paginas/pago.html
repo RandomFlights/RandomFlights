@@ -80,45 +80,62 @@
     </nav>
 
   <div class="container contenedor">
-    <div class="registro">
-      <div class="row">
-        <div class="col-md-1"></div><!-- Columna vacia -->
-      <!-- Contacta -->
-      <div class="col-md-10">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="panel panel-primary">
-              <div class="panel-heading">CONTACTA CON NOSOTROS</div>
-            </div>
+    <div class="row">
+      <div class="col-md-1"></div><!-- Columna vacia -->
+      <div class="col-md-5">
+        <form role="form" action="#" method="post">
+          <div class="form-group" id="form-group-pais">
+            <label for="pais"><span class="required">*</span> Pais:</label>
+            <input type="text" class="form-control" name="pais" id="pais" placeholder="Pais" required>
           </div>
-          <div class="col-md-8"></div>
-        </div>
-      <form role="form" action="" method="post">
-        <div class="form-group" id="form-group-usuario">
-          <label for="usuario"><span class="required">*</span> Nombre:</label>
-          <input onchange="mandaValor('usuario')" type="text" class="form-control" name="usuario" id="usuario" placeholder="Name" required>
-        </div>
-        <div class="form-group" id="form-group-email">
-          <label for="email"><span class="required">*</span> Correo electrónico:</label>
-          <input onchange="mandaValor('email')" type="email" class="form-control" name="email" id="email" placeholder="usuario@gmail.com" required>
-        </div>
-        <div class="form-group" id="form-group-telefono">
-          <label for="telefono">Teléfono:</label>
-          <input type="tel" class="form-control" name="telefono" id="telefono">
-        </div>
-        <div class="form-group" id="form-group-text">
-          <label for="text">Comentario:</label>
-          <textarea type="text" class="form-control" name="text" id="text"></textarea>
-        </div>
-        <div class="col-md-4"></div>
-          <div class="col-md-4">
-            <button type="submit" onclick="" class="btn btn-primary  btn-lg btn-block">Consultar</button>
+
+          <div class="form-group" id="form-group-nombre">
+            <label for="nombre"><span class="required">*</span> Nombre:</label>
+            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" required>
           </div>
-        <div class="col-md-4"></div>
-      </form>
+
+          <div class="form-group" id="form-group-apellidos">
+            <label for="apellidos"><span class="required">*</span> Apellidos:</label>
+            <input type="text" class="form-control" name="apellidos" id="apellidos" placeholder="Password" required>
+          </div>
+
+          <div class="form-group" id="form-group-fechaNac">
+            <label for="fechaNac"><span class="required">*</span> Fecha de nacimiento:</label>
+            <input type="date" class="form-control" name="fechaNac" id="fechaNac">
+          </div>
+      </div>
+
+      <div class="col-md-5">
+          <div class="form-group" id="form-group-email">
+            <label for="email"><span class="required">*</span> Correo electrónico:</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="usuario@gmail.com" required>
+          </div>
+
+          <div class="form-group" id="form-group-numtarjeta">
+            <label for="numtarjeta">Numero de tarjeta:</label>
+            <input type="text" class="form-control" name="numtarjeta" id="numtarjeta">
+          </div>
+
+          <div class="form-group" id="form-group-cvv">
+            <label for="cvv"><span class="required">*</span> csc:</label>
+            <input type="text" class="form-control" name="cvv" id="cvv" placeholder="123" required>
+          </div>
+
+          <div class="form-group" id="form-group-tipotarjeta">
+            <label for="tipotarjeta"><span class="required">*</span> Tipo tarjeta:</label><br>
+            <input type="radio" name="tarjeta"><img class="tarjeta" src="../media/img/visa.png" alt="fotovisa"/>
+            <input type="radio" name="tarjeta"><img class="tarjeta" src="../media/img/mastercard.png" alt="fotovisa"/>
+          </div>
+
+          <input type="button" id="submitPago" onclick="validarFormularioPago()" name="submitPago" class="btn btn-warning" value="Confirmar compra">
+        </form>
+      </div>
+      <div class="col-md-1"></div><!-- Columna vacia -->
     </div>
-    <!-- Fin Contacta -->
-    <div class="col-md-1"></div><!-- Columna vacia -->
+
+    <div class="row">
+      <div id="RESULTADOCOMPRA"></div>
+    </div>
   </div>
 
   <footer>

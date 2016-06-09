@@ -66,14 +66,16 @@ function identificarse(){
         var ok = peticion.responseText;
         
         if(ok=="true") {
-            var pintado = "<h2>Bienvenido "+user+"</h2><input type='button' id='cerrarSesion' onclick='cerrarSesion()' value='Cerrar Sesion'>";
+            var pintado = "<p class='kglifeGrey'>¡Bienvenido <span class='orange'>"+user+"</span>!</p><button  id='cerrarSesion' onclick='cerrarSesion()' type='button' class='btn btn-warning'>Cerrar sesión</button>";
             document.getElementById("login").style.display="none";
             document.getElementById("LOGEADO").style.visibility="visible";
             sessionStorage.usuario = document.getElementById("usuario").value;
+            document.getElementById("rallaLogin").style.top="115px";
         } else {
             var pintado = "<p>Lo sentimos, pero no esta registrado en nuestra base de datos.</p>";
             document.getElementById("login").style.display="none";
             document.getElementById("LOGEADO").style.visibility="visible";
+            document.getElementById("rallaLogin").style.top="115px";
         }
         
         
@@ -132,9 +134,11 @@ function cerrarSesion() {
 function loginSession() {
     var user = sessionStorage.usuario;
     if(user!="") {
-      var pintado = "<h2>Bienvenido "+user+"</h2><a href='editaPerfil.html'>Editar Perfil</a> <input type='button' id='cerrarSesion' onclick='cerrarSesion()' value='Cerrar Sesion'>";
+      var pintado = "<p class='kglifeGrey'>¡Bienvenido <span class='orange'>"+user+"</span>!</p><button  id='cerrarSesion' onclick='cerrarSesion()' type='button' class='btn btn-warning'>Cerrar sesión</button>";
       document.getElementById("LOGEADO").innerHTML = pintado;
       document.getElementById("LOGEADO").style.visibility="visible";
+      document.getElementById("rallaLogin").style.top="115px";
+      document.getElementById("login").style.display="none";
     }
 }
 /*}*/
@@ -147,6 +151,7 @@ function ocultaLogin() {
     } else {
         document.getElementById("login").style.display="none";
         document.getElementById("LOGEADO").style.visibility="visible";
+        document.getElementById("rallaLogin").style.top="115px";
     }
 }
 /*}*/
@@ -221,8 +226,16 @@ function buscarVuelos(){
         '&dias='+encodeURIComponent(dias),
         
   success: function(){
+    var ok = peticion.responseText;
+    if(ok == "error1")
+      mensaje = "<div class='alert alert-warning errorVuelos'>Por favor, rellena todos los campos para continuar.</div>";
+    else
+      if(ok == "error2")
+        mensaje = "<div class='alert alert-danger errorVuelos'>Lo sentimos pero no hay ningun paquete disponible para esas fechas.</div>";
+      else
+        mensaje = peticion.responseText;
     $("#RESULTADO_DE_VUELOS").slideDown(1000);
-    $("#RESULTADO_DE_VUELOS").html(peticion.responseText);
+    $("#RESULTADO_DE_VUELOS").html(mensaje);
     },
     error: function(){alert('Se produjo un error inesperado');}
     });
@@ -234,6 +247,7 @@ function reservar() {
   var mensaje = "";
   if(sessionStorage.usuario != "") {
     var ida = $('#ida').val();
+    var destino = $('#destino').val();
     var vuelta = $('#vuelta').val();
     var hotel = $('#hotel').val();
     var direccion_hotel = $('#direccion_hotel').val();
@@ -249,6 +263,7 @@ function reservar() {
     type: 'POST',
     asnc: true,
     data: 'ida='+encodeURIComponent(ida) +
+          '&destino='+encodeURIComponent(destino) +
           '&vuelta='+encodeURIComponent(vuelta) +
           '&hotel='+encodeURIComponent(hotel) +
           '&direccion_hotel='+encodeURIComponent(direccion_hotel) +
@@ -332,4 +347,96 @@ function masInfo(id){
   $(str).toggle(500);
 }
 
+/*}*/
+
+/*FUNCION PARA GUARDAR EN SESION LOS DATOS DEL VUELO RESERVADO {*/
+function datosSesion() {
+  sessionStorage.ida = $('#ida').val();
+  sessionStorage.destino = $('#destino').val();
+  sessionStorage.vuelta = $('#vuelta').val();
+  sessionStorage.hotel = $('#hotel').val();
+  sessionStorage.direccion_hotel = $('#direccion_hotel').val();
+  sessionStorage.pvp_final = $('#pvp_final').val();
+  sessionStorage.fecha_salida = $('#fecha_salida').val();
+  sessionStorage.fecha_vuelta = $('#fecha_vuelta').val(); 
+  sessionStorage.salida_ida = $('#salida_ida').val(); 
+  sessionStorage.salida_vuelta = $('#salida_vuelta').val(); 
+  var user = sessionStorage.usuario;
+}
+/*}*/
+
+/*FUNCION PARA RECOGER EL ID DE UNA RESERVA*/
+function sesionID(id) {
+  sessionStorage.id = id;
+}
+/*}*/
+
+/*FUNCION PARA CONFIRMAR PAGO {*/
+function confirmarPago(){
+  var ida = sessionStorage.ida;
+  var destino = sessionStorage.destino;
+  var vuelta = sessionStorage.vuelta;
+  var hotel = sessionStorage.hotel;
+  var direccion_hotel = sessionStorage.direccion_hotel;
+  var pvp_final = sessionStorage.pvp_final;
+  var fecha_salida = sessionStorage.fecha_salida;
+  var fecha_vuelta = sessionStorage.fecha_vuelta;
+  var salida_ida = sessionStorage.salida_ida;
+  var salida_vuelta = sessionStorage.salida_vuelta;
+  var user = sessionStorage.usuario;
+  var id = sessionStorage.id;
+
+  var peticion = $.ajax({
+  url:  'http://127.0.0.1/PROYECTOV2/php/pagos.php?nocache='+Math.random(),
+  type: 'POST',
+  asnc: true,
+  data: 'ida='+encodeURIComponent(ida) +
+          '&destino='+encodeURIComponent(destino) +
+          '&vuelta='+encodeURIComponent(vuelta) +
+          '&hotel='+encodeURIComponent(hotel) +
+          '&direccion_hotel='+encodeURIComponent(direccion_hotel) +
+          '&user='+encodeURIComponent(user) +
+          '&fecha_salida='+encodeURIComponent(fecha_salida) +
+          '&fecha_vuelta='+encodeURIComponent(fecha_vuelta) +
+          '&salida_ida='+encodeURIComponent(salida_ida) +
+          '&salida_vuelta='+encodeURIComponent(salida_vuelta) +
+          '&id='+encodeURIComponent(id) +
+          '&pvp_final='+encodeURIComponent(pvp_final),
+
+  success: function(){
+   
+    var ok = peticion.responseText;
+
+    if(ok=="Si")
+      var mensaje = "<div class='alert alert-success'>El pago se ha realizado de forma exitosa</div>";
+    else
+      var mensaje = "<div class='alert alert-warning'>Ha ocurrido un error procesando su peticion.</div>";
+
+    $("#RESULTADOCOMPRA").html(mensaje);
+    },
+    error: function(){alert('Se produjo un error inesperado');}
+    });
+}
+/*}*/
+
+/*FUNCION PARA borrar reserva {*/
+function borrarReserva(id){
+  var id = id;
+
+  var peticion = $.ajax({
+  url:  'http://127.0.0.1/PROYECTOV2/php/borrarReserva.php?nocache='+Math.random(),
+  type: 'POST',
+  asnc: true,
+  data: 'id='+encodeURIComponent(id),
+
+
+  success: function(){
+   
+    
+      location.reload();
+      
+    },
+    error: function(){alert('Se produjo un error inesperado');}
+    });
+}
 /*}*/

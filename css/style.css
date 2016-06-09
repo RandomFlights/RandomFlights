@@ -8,6 +8,15 @@
     color: #EC6C1A;
     font-size: 30px;
 }
+.kglifeSimple {
+    font-family: "kg_life";
+    color: white;
+}
+
+.kglifeGrey {
+    font-family: "kg_life";
+    color: #757575;
+}
 
 .contenedor {
     padding-top: 100px;
@@ -28,7 +37,7 @@
     margin: 5px;
 }
 
-/* No se para que sirve { */
+
 .navbar-fixed-top .nav {
     padding: 15px 0;
 }
@@ -46,7 +55,9 @@
         padding: 15px 0;
     }
 }
-/* } */
+
+.navbar { margin-top: 40px; }
+.nav { font-size: 20px; }
 /*fin cabecera*/
 
 /*contenedor*/
@@ -160,13 +171,15 @@ ul {
 }
 
 #LOGEADO {
-    font-size: 12px;
+    font-size: 20px;
     position: absolute;
     top: 8px;
     right: 8px;
     padding: 5px;
-    height: 230px;
+    height: 100px;
     visibility: hidden;
+    width: 206px;
+    text-align: center;
     background-color: #FDFDFD;
 }
 
@@ -187,17 +200,19 @@ ul {
     border: 2px solid black;
     background-color: white;
 }
-
+/*RESULTADO VUELOS {*/
 #RESULTADO_DE_VUELOS { 
     background-image: url("../media/img/divPrincipal.png");
     background-repeat: no-repeat;
     padding: 50px 40px 20px 0px;
-    margin-left: 11px;
+    margin-left: 12px;
     display: none;
 }
 
 #alerta { visibility: hidden; margin-top: 20px; }
+.errorVuelos { margin-left: 10px; }
 
+/*}*/
 .bolditalic {
     font-weight: bold;
     font-style: italic;
@@ -230,8 +245,184 @@ ul {
 /*Mis reservas {*/
 .reserva { 
     padding: 10px 0px 10px 0px;
+    background-color: #072D9B;
+    position: relative;
 }
-.red { background-color: #AA2C2C;}
-.green { background-color: #48BB6E;}
+.bordeorange { border-bottom: 8px solid #EC6C1A; }
 .oculto { display: none; }
+.fa-exclamation-triangle { color: #EC6C1A; }
+.masinfo { background-color: white; margin: 10px 10px 0px 10px; padding: 5px; }
+.enlace, .enlace:hover, .enlace:link, .enlace:visited, .enlace:active { color: white;}
+.orange { color: #EC6C1A;}
+.fa-trash-o { color: #DCCDD0; float: right; margin-right: 5px; }
+.tarjeta{
+    width: 50px;
+}
+/*}*/
+
+/*Quienes somos {*/
+    .image{
+  width: 100%;
+  height: 300px;
+  background: grey;
+  background-size: cover;
+  background-position: center;
+  margin-top: 30px;
+  color: white;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+.image.d{
+  background-image: url('../media/img/socios/Diego.jpg');
+}
+.image.a{
+  background-image: url('../media/img/socios/Adrian.jpg');
+}
+.image.j{
+  background-image: url('../media/img/socios/Jaime.jpg');
+}
+.equipo{
+  color: #e30054;
+}
+.value{
+  width: 80%;
+  height: 50px;
+  background-color: #e30054;
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  margin: auto;
+  font-size: 27px;
+}
+
+.name{
+  width: 100%;
+  position: absolute;
+  bottom:30px;
+  height: 23px;
+
+}
+.position{
+  width: 60%;
+  left: 20%;
+  font-size: 11px;
+  position: absolute;
+  bottom: 7px;
+  height: 23px;
+  line-height: 23px;
+  border-top: 1px solid white;
+}
+.bg-deg{
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  bottom: 0;
+
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.7)), color-stop(100%,rgba(0,0,0,0)));
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0) 100%);
+  background: -o-linear-gradient(bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0) 100%);
+  background: -ms-linear-gradient(bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0) 100%);
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
+}
+
+/* TRIANGLES */
+.triangle1{
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 70px 62px 0 120px;
+  border-color: blue transparent transparent transparent;
+  position: absolute;
+  top: 80px;
+  right: 10%;
+  -ms-transform: rotate(12deg);
+  -webkit-transform: rotate(12deg); 
+  transform: rotate(12deg);
+}
+.triangle2{
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 28px 22px 0 33px;
+  border-color: orange transparent transparent transparent;
+  position: absolute;
+  top: 160px;
+  left: 43%;
+  z-index: -1;
+  -ms-transform: rotate(-18deg);
+  -webkit-transform: rotate(-18deg);
+  transform: rotate(-18deg);
+}
+.triangle3{
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 252px 230px 0 0;
+  border-color: orange transparent transparent transparent;
+  position: absolute;
+  top: 25%;
+  right: 0;
+  -ms-transform: rotate(-18deg);
+  -webkit-transform: rotate(-18deg);
+  transform: rotate(-18deg);
+  z-index: -1;
+}
+.triangle4{
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 61px 200px 100px;
+  border-color: transparent transparent blue transparent;
+  position: absolute;
+  top: 30%;
+  left: 6%;
+  z-index: -1;
+  -ms-transform: rotate(52deg);
+  -webkit-transform: rotate(52deg);
+  transform: rotate(52deg);
+}
+.triangle5{
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 40px 40px 0 0px;
+  border-color: red transparent transparent transparent;
+  position: absolute;
+  top: 40%;
+  left: 60%;
+  z-index: -1;
+  -ms-transform: rotate(23deg);
+  -webkit-transform: rotate(23deg);
+  transform: rotate(23deg);
+}
+.triangle7{
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 80px 77px 0 0px;
+  border-color: blue transparent transparent transparent;
+  position: absolute;
+  top: 60%;
+  left: 67%;
+  z-index: -1;
+  -ms-transform: rotate(76deg);
+  -webkit-transform: rotate(76deg);
+  transform: rotate(76deg);
+}
+.triangle8{
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 110px 102px 0 140px;
+  border-color: orange transparent transparent transparent;
+  position: absolute;
+  top: 66%;
+  right: 36%;
+  -ms-transform: rotate(12deg);
+  -webkit-transform: rotate(12deg);
+  transform: rotate(-68deg);
+  z-index: -1;
+}
 /*}*/
