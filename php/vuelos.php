@@ -9,7 +9,6 @@
 
     $origen = $_POST['origen'];
     $pvp = $_POST['pvp'];
-// echo $pvp."pvpinicial</br>";
     $fecha_salida = $_POST['fecha_salida'];
     $fecha_vuelta = $_POST['fecha_vuelta'];
     $aventureros = $_POST['aventureros'];
@@ -26,9 +25,7 @@
         $ale = 0;
 
         $pvp_persona = $pvp / $aventureros;
-    // echo $pvp_persona."pvp_persona por persona</br>";
         $pvp_paquete =  $pvp_persona / 3; //entre tres que seria el vuelo de ida el de vuelta y el hotel
-    // echo $pvp_paquete."pvp_paquete entre tres (ida vuelta hotel) para cada persona</br>";
             
 
         //Para los viajes de ida
@@ -45,7 +42,6 @@
             }
 
             $ale = rand(0,count($vuelos_ida)-1);
-            // echo $ale."Ale de ida</br>";
 
             $elegido = $vuelos_ida[$ale];
 
@@ -57,14 +53,14 @@
             $pvp_ida = $fila_ida[5]; 
             $imagen_ida = $fila_ida[6]; 
             $id_ida = $fila_ida[7]; 
-            // echo $pvp_ida."pvp ida</br>";
+
             $resto = $pvp_persona - $pvp_ida; //es lo que nos quedaria despues de haber gastado en el vuelo
-            // echo $resto."resto: pvp_persona - la ida</br>";
+
             $resto_paquete = $resto / 2; //entre dos que seria el vuelo de vuelta y el hotel
-            // echo $resto_paquete."resto_paquete es el resto entre dos vuelta y hotel</br>";
+
 
             //Para viajes de vuelta
-            $vuelta = explode(" ",$elegido); //Estabamos pillando el $fila['destino'], pero vete tu asaber de donde, pillaba el ultimo, no el elegido del random.
+            $vuelta = explode(" ",$elegido);
             $vuelta = $vuelta[2]; 
 
             $consulta = mysql_query("SELECT * FROM vuelos WHERE origen='$vuelta' AND destino='$origen' AND precio BETWEEN '0' AND '$resto_paquete' AND fecha='$fecha_vuelta'",$conexion);
@@ -81,7 +77,6 @@
                 }
 
                 $ale = rand(0,count($vuelos_vuelta)-1);
-                // echo $ale."Ale de vuelta</br>";
 
                 $elegido = $vuelos_vuelta[$ale];
 
@@ -92,12 +87,11 @@
                 $pvp_vuelta = $fila_vuelta[5]; 
                 $imagen_vuelta = $fila_vuelta[6];
                 $id_vuelta = $fila_vuelta[7];
-                // echo $pvp_vuelta."pvp vuelta</br>";
+
                 $resto = $resto - $pvp_vuelta; 
-                // echo $resto."resto menos pvp vuelta</br>";
+
                 $resto_habitacion = intval($resto / $dias);
-                // echo $resto_habitacion."resto_paquete entre dias da precio habitacion</br>";
-                // echo $vuelta."</br>";
+
                 //Para hoteles
                 $consulta = mysql_query("SELECT * FROM hoteles WHERE ciudad='$vuelta' AND precio BETWEEN '0' AND '$resto_habitacion'",$conexion);
                 if(mysql_num_rows($consulta) != 0) {
@@ -112,14 +106,10 @@
                     }
 
                     $ale = rand(0,count($hoteles)-1);
-                    // echo count($hoteles)."cuenta de hoteles que encuentra<br>";
-                    // echo $ale."aleatorio de hoteles<br>";
-                    // echo print_r($hoteles);
+
                     $hotel = $hoteles[$ale];
-                    //echo print_r($hotel)."</br>";
-                    // echo $hotel."</br>";
+
                     $fila_habitacion = explode(" ",$hotel);
-                    //echo print_r($fila_habitacion)."</br>";
                     $nombre_hotel = $fila_habitacion[0];
                     $nombre_hotel = str_replace("_"," ",$nombre_hotel);
                     $ciudad_hotel = $fila_habitacion[1];
@@ -128,10 +118,9 @@
                     $habitacion = $fila_habitacion[3];
                     $imagen_hotel = $fila_habitacion[4];
                     $id_hotel = $fila_habitacion[5];
-                    // echo $habitacion."pvp habitacion</br>";
+
                     $pvp_habitacion = $habitacion * $dias;
-                    // echo $dias."dias </br>";
-                    // echo $pvp_habitacion."precio de habitacion por los dias que se  quede</br>";
+
 
                     //precio final del paquete
                     $pvp_final = ($pvp_ida + $pvp_vuelta + $pvp_habitacion)*$aventureros    ;
@@ -221,7 +210,7 @@
 
                         <div class='row'>
                           <div class='col-md-5'>
-                              <a href='./paginas/pago.html' target='blank'><button type='button' id='reserva' onclick='reservar(), datosSesion()' class='btn btn-primary btn-lg'>Resérvalo ya!</button></a>
+                              <button type='button' id='reserva' onclick='reservar(), datosSesion()' class='btn btn-primary btn-lg'>Resérvalo ya!</button>
                               <a href='#RESULTADO_DE_VUELOS'><button type='button' name='otrovuelo' id='otrovuelo' class='btn btn-warning btn-lg' onclick='buscarVuelos()'>Quiero otro!</button></a>
                           </div>
                           <div class='col-md-2 kglife'>Total: </div>

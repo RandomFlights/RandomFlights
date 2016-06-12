@@ -17,7 +17,7 @@
     $salida_vuelta = @$_POST['salida_vuelta'];
     $user = @$_POST['user'];
     $id = @$_POST['id'];
-
+    
     if($id=="") {
     	$reserva = mysql_query("SELECT id FROM reservas WHERE destino='$destino' AND vuelo_ida='$ida' AND vuelo_vuelta='$vuelta' AND 
     	hotel='$hotel' AND direccion_hotel='$direccion_hotel' AND pvp_final='$pvp_final' AND salida='$fecha_salida' 
