@@ -26,7 +26,7 @@ function crearCuenta(){
   var fechaNac = $('#fechaNac').val();
   
   var peticion = $.ajax({
-  url:  'http://127.0.0.1/PROYECTOV2/php/registro.php?nocache='+Math.random(),
+  url:  'http://127.0.0.1/RandomFlights/php/registro.php?nocache='+Math.random(),
   type: 'POST',
   async: true,
   data: 'usuarioReg='+encodeURIComponent(usuarioReg) +
@@ -57,7 +57,7 @@ function identificarse(){
   var passwd = $('#passwd').val();
   
   var peticion = $.ajax({
-  url:  'http://127.0.0.1/PROYECTOV2/php/login.php?nocache='+Math.random(),
+  url:  'http://127.0.0.1/RandomFlights/php/login.php?nocache='+Math.random(),
   type: 'POST',
   asnc: true,
   data: 'user='+encodeURIComponent(user) +
@@ -215,7 +215,7 @@ function buscarVuelos(){
   var dias = restaFechas(fecha_salida, fecha_vuelta);
 
   var peticion = $.ajax({
-  url:  'http://127.0.0.1/PROYECTOV2/php/vuelos.php?nocache='+Math.random(),
+  url:  'http://127.0.0.1/RandomFlights/php/vuelos.php?nocache='+Math.random(),
   type: 'POST',
   asnc: true,
   data: 'origen='+encodeURIComponent(origen) +
@@ -259,7 +259,7 @@ function reservar() {
     var user = sessionStorage.usuario;
 
     var peticion = $.ajax({
-    url:  'http://127.0.0.1/PROYECTOV2/php/reservar.php?nocache='+Math.random(),
+    url:  'http://127.0.0.1/RandomFlights/php/reservar.php?nocache='+Math.random(),
     type: 'POST',
     asnc: true,
     data: 'ida='+encodeURIComponent(ida) +
@@ -304,7 +304,7 @@ function reservar() {
 function muestrareservas(){
   var user = sessionStorage.usuario;
   var peticion = $.ajax({
-  url:  'http://127.0.0.1/PROYECTOV2/php/muestrareservas.php?nocache='+Math.random(),
+  url:  'http://127.0.0.1/RandomFlights/php/muestrareservas.php?nocache='+Math.random(),
   type: 'POST',
   asnc: true,
   data: 'user='+encodeURIComponent(user),
@@ -387,7 +387,7 @@ function confirmarPago(){
   var id = sessionStorage.id;
 
   var peticion = $.ajax({
-  url:  'http://127.0.0.1/PROYECTOV2/php/pagos.php?nocache='+Math.random(),
+  url:  'http://127.0.0.1/RandomFlights/php/pagos.php?nocache='+Math.random(),
   type: 'POST',
   asnc: true,
   data: 'ida='+encodeURIComponent(ida) +
@@ -424,7 +424,7 @@ function borrarReserva(id){
   var id = id;
 
   var peticion = $.ajax({
-  url:  'http://127.0.0.1/PROYECTOV2/php/borrarReserva.php?nocache='+Math.random(),
+  url:  'http://127.0.0.1/RandomFlights/php/borrarReserva.php?nocache='+Math.random(),
   type: 'POST',
   asnc: true,
   data: 'id='+encodeURIComponent(id),
