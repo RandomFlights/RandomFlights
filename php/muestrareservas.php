@@ -33,6 +33,7 @@
                 $hora_salida = $fila['hora_salida'];
                 $hora_llegada = $fila['hora_llegada'];
                 $pagado = $fila['pagado'];
+                
                 $con++;
                 
 
