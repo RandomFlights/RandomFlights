@@ -80,46 +80,46 @@
     </nav>
 
   <div class="container contenedor">
-    <div class="registro">
-      <div class="row">
-        <div class="col-md-1"></div><!-- Columna vacia -->
-      <!-- Contacta -->
+    <div class="row">
+      <div class="col-md-1"></div><!-- Columna vacia -->
+      
       <div class="col-md-10">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="panel panel-primary">
-              <div class="panel-heading">CONTACTA CON NOSOTROS</div>
+        <h3>Registrate</h3>
+          <form role="form" action="" method="post">
+            <div class="form-group" id="form-group-usuario">
+              <label for="usuario"><span class="required">*</span> Nombre:</label>
+              <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Usuario" required>
             </div>
-          </div>
-          <div class="col-md-8"></div>
-        </div>
-      <form role="form" action="" method="post">
-        <div class="form-group" id="form-group-usuario">
-          <label for="usuario"><span class="required">*</span> Nombre:</label>
-          <input onchange="mandaValor('usuario')" type="text" class="form-control" name="usuario" id="usuario" placeholder="Name" required>
-        </div>
-        <div class="form-group" id="form-group-email">
-          <label for="email"><span class="required">*</span> Correo electrónico:</label>
-          <input onchange="mandaValor('email')" type="email" class="form-control" name="email" id="email" placeholder="usuario@gmail.com" required>
-        </div>
-        <div class="form-group" id="form-group-telefono">
-          <label for="telefono">Teléfono:</label>
-          <input type="tel" class="form-control" name="telefono" id="telefono">
-        </div>
-        <div class="form-group" id="form-group-text">
-          <label for="text">Comentario:</label>
-          <textarea type="text" class="form-control" name="text" id="text"></textarea>
-        </div>
-        <div class="col-md-4"></div>
-          <div class="col-md-4">
-            <button type="submit" onclick="" class="btn btn-primary  btn-lg btn-block">Consultar</button>
-          </div>
-        <div class="col-md-4"></div>
-      </form>
+
+            <div class="form-group" id="form-group-email">
+              <label for="email"><span class="required">*</span> Correo electrónico:</label>
+              <input type="email" class="form-control" name="email" id="email" placeholder="usuario@gmail.com" required>
+            </div>
+
+            <div class="form-group" id="form-group-telefono">
+              <label for="telefono">Teléfono:</label>
+              <input type="tel" class="form-control" name="telefono" id="telefono">
+            </div>
+
+            <div class="form-group" id="form-group-text">
+              <label for="text">Comentario:</label>
+              <textarea type="text" class="form-control" name="text" id="text"></textarea>
+            </div>
+
+            <div class="row">
+              <div class="col-md-5"></div>
+              <div class="col-md-2">
+                <input type="button" id="contactar" name="contactar" class="btn btn-primary btn-lg" value="Contáctanos">
+              </div>
+              <div class="col-md-5"></div>
+            </div>
+          </form>
+      </div>
+      <div class="col-md-1"></div><!-- Columna vacia -->
     </div>
-    <!-- Fin Contacta -->
-    <div class="col-md-1"></div><!-- Columna vacia -->
+    <div id="validaciones" class="col-md-12"></div>
   </div>
+ 
 
   <footer>
     <div class="footer navbar navbar-fixed-bottom">

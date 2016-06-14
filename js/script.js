@@ -1,9 +1,9 @@
 $(document).ready(function(){
     $(document).ready(sesion);
-    $('#submitReg').click(compruebaReg);
-    $('#submitLog').click(compruebaLog);
+    $('#submitReg').click(validacionReg);
+    $('#submitLog').click(validacionLogin);
     $('#comenzar').click(buscarVuelos);
-
+    $('#contactar').click(validacionContacta);
 });
 
 /*FUNCION PARA REGISTRARSE {*/
@@ -75,7 +75,8 @@ function identificarse(){
             var pintado = "<p>Lo sentimos, pero no esta registrado en nuestra base de datos.</p>";
             document.getElementById("login").style.display="none";
             document.getElementById("LOGEADO").style.visibility="visible";
-            document.getElementById("rallaLogin").style.top="115px";
+            document.getElementById("LOGEADO").style.height="130px";
+            document.getElementById("rallaLogin").style.top="145px";
         }
         
         
@@ -86,11 +87,123 @@ function identificarse(){
 }
 /*}*/
 
-/*FUNCION PARA MOSTRAR EL FORMULARIO {*/
-function mostarForm(){
-  document.getElementById("formulario").style.visibility="visible";
-}
+/*FUNCION PARA EXPRESIONES REGULARES DEL LOGIN Y REGISTRO {*/
+  function validacionLogin() {
+    var passwd = document.getElementById("passwd").value;
+    var usuario = document.getElementById("usuario").value;
+    var expPasswd = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+    var errores="";
+
+    if(!expPasswd.test(passwd)) {
+      errores += "<p>La contraseña debe tener al menos 6 caracteres, una letra mayúscula, minúscula y números</p>";
+      document.getElementById(document.getElementById('passwd').parentNode.id).className+=' has-error';
+    }
+
+    if(usuario=="") {
+      errores += "<p>El nombre de usuario no puede estar vacío</p>";
+      document.getElementById(document.getElementById('usuario').parentNode.id).className+=' has-error';
+    }
+
+    $("#validaciones").html(errores);
+
+    if(errores=="")
+      identificarse();
+  }
+  function validacionReg() {
+    var usuario = document.getElementById("usuarioReg").value;
+    var passwd = document.getElementById("passwdReg").value;
+    var passwd2 = document.getElementById("passwdReg2").value;
+    var email = document.getElementById("email").value;
+    var telefono = document.getElementById("telefono").value;
+    var errores = "";
+
+    var expPasswd = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+    var expEmail = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
+    var expTel = /^[9|6|7][0-9]{8}$/;
+
+    if(usuario=="") {
+      errores += "<p>El nombre de usuario no puede estar vacío</p>";
+      document.getElementById(document.getElementById('usuarioReg').parentNode.id).className+=' has-error';
+    }
+
+    if(!expPasswd.test(passwd)) {
+      errores += "<p>La contraseña debe tener al menos 6 caracteres, una letra mayúscula, minúscula y números</p>";
+      document.getElementById(document.getElementById('passwdReg').parentNode.id).className+=' has-error';
+    }
+      
+    if(passwd!=passwd2) {
+      document.getElementById(document.getElementById('passwdReg').parentNode.id).className+=' has-error';
+      document.getElementById(document.getElementById('passwdReg2').parentNode.id).className+=' has-error';
+      errores += "<p>Las contraseñas deben coincidir</p>";
+    }
+
+    if(!expEmail.test(email)) {
+      errores += "<p>El email no es válido</p>";
+      document.getElementById(document.getElementById('email').parentNode.id).className+=' has-error';
+    }
+
+    if(telefono!="") {
+      if(!expTel.test(expTel)) {
+        errores += "<p>El teléfono no es válido</p>";
+        document.getElementById(document.getElementById('telefono').parentNode.id).className+=' has-error';
+      }
+
+    }
+
+    if(errores=="")
+      crearCuenta();
+
+    $("#validaciones").html(errores);
+
+  }
+  
+  
 /*}*/
+
+/*FUNCION PARA EXPRESIONES REGULARES DE CONTACTA {*/
+  function validacionContacta() {
+    var usuario = document.getElementById("usuario").value;
+    var email = document.getElementById("email").value;
+    var telefono = document.getElementById("telefono").value;
+    var text = document.getElementById("text").value;
+    var errores = "";
+
+    var expEmail = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
+    var expTel = /^[9|6|7][0-9]{8}$/;
+
+    if(usuario=="") {
+      errores += "<p>El nombre de usuario no puede estar vacío</p>";
+      document.getElementById(document.getElementById('usuario').parentNode.id).className+=' has-error';
+    }
+
+    if(!expEmail.test(email)) {
+      errores += "<p>El email no es válido</p>";
+      document.getElementById(document.getElementById('email').parentNode.id).className+=' has-error';
+    }
+
+    if(telefono!="") {
+      if(!expTel.test(expTel)) {
+        errores += "<p>El teléfono no es válido</p>";
+        document.getElementById(document.getElementById('telefono').parentNode.id).className+=' has-error';
+      }
+
+    }
+
+    if(text=="") {
+      errores += "<p>El comentario no puede estar vacío</p>";
+      document.getElementById(document.getElementById('text').parentNode.id).className+=' has-error';
+    }
+
+    if(errores=="")
+      $("#validaciones").html("<div class='alert alert-success'><strong>Gracias por contactarnos, te responderemos lo antes posible.</strong></div>");
+
+    $("#validaciones").html(errores);
+
+  }
+  
+  
+/*}*/
+
 /*FUNCION PARA COMPROBAR LOS DATOS DEL LOGIN {*/
 var elementosLog = new Array("usuario", "passwd", "usuarioReg", "passwdReg", "passwdReg2", "email", "fechaNac");
 function mandaValor(elemento) {
@@ -106,7 +219,7 @@ function compruebaLog(){
       i++;
 
     if(i==2)
-      identificarse();
+      validacionLogin();
   }
 }
 function compruebaReg(){
@@ -118,7 +231,7 @@ function compruebaReg(){
       i++;
 
     if(i==5)
-      crearCuenta();
+      validacionReg();
   }
 }
 /*}*/
@@ -155,6 +268,14 @@ function ocultaLogin() {
     }
 }
 /*}*/
+
+/*FUNCION PARA MOSTRAR EL FORMULARIO {*/
+function mostarForm(){
+  document.getElementById("formulario").style.visibility="visible";
+}
+/*}*/
+
+
 
 /*FUNCION PARA CAMBIAR LA FOTO DEL BOTON COMENZAR {*/
 function cambiaFoto() {
