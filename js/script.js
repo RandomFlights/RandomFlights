@@ -2,8 +2,10 @@ $(document).ready(function(){
     $(document).ready(sesion);
     $('#submitReg').click(validacionReg);
     $('#submitLog').click(validacionLogin);
+    $('#submitPago').click(validacionPago);
     $('#comenzar').click(buscarVuelos);
     $('#contactar').click(validacionContacta);
+    
 });
 
 /*FUNCION PARA REGISTRARSE {*/
@@ -95,12 +97,12 @@ function identificarse(){
     var errores="";
 
     if(!expPasswd.test(passwd)) {
-      errores += "<p>La contraseña debe tener al menos 6 caracteres, una letra mayúscula, minúscula y números</p>";
+      errores += "<p>-La contraseña debe tener al menos 6 caracteres, una letra mayúscula, minúscula y números</p>";
       document.getElementById(document.getElementById('passwd').parentNode.id).className+=' has-error';
     }
 
     if(usuario=="") {
-      errores += "<p>El nombre de usuario no puede estar vacío</p>";
+      errores += "<p>-El nombre de usuario no puede estar vacío</p>";
       document.getElementById(document.getElementById('usuario').parentNode.id).className+=' has-error';
     }
 
@@ -114,6 +116,7 @@ function identificarse(){
     var passwd = document.getElementById("passwdReg").value;
     var passwd2 = document.getElementById("passwdReg2").value;
     var email = document.getElementById("email").value;
+    var fechaNac = document.getElementById("fechaNac").value;
     var telefono = document.getElementById("telefono").value;
     var errores = "";
 
@@ -122,32 +125,37 @@ function identificarse(){
     var expTel = /^[9|6|7][0-9]{8}$/;
 
     if(usuario=="") {
-      errores += "<p>El nombre de usuario no puede estar vacío</p>";
+      errores += "<p>-El nombre de usuario no puede estar vacío</p>";
       document.getElementById(document.getElementById('usuarioReg').parentNode.id).className+=' has-error';
     }
 
     if(!expPasswd.test(passwd)) {
-      errores += "<p>La contraseña debe tener al menos 6 caracteres, una letra mayúscula, minúscula y números</p>";
+      errores += "<p>-La contraseña debe tener al menos 6 caracteres, una letra mayúscula, minúscula y números</p>";
       document.getElementById(document.getElementById('passwdReg').parentNode.id).className+=' has-error';
     }
       
     if(passwd!=passwd2) {
       document.getElementById(document.getElementById('passwdReg').parentNode.id).className+=' has-error';
       document.getElementById(document.getElementById('passwdReg2').parentNode.id).className+=' has-error';
-      errores += "<p>Las contraseñas deben coincidir</p>";
+      errores += "<p>-Las contraseñas deben coincidir</p>";
     }
 
     if(!expEmail.test(email)) {
-      errores += "<p>El email no es válido</p>";
+      errores += "<p>-El email no es válido</p>";
       document.getElementById(document.getElementById('email').parentNode.id).className+=' has-error';
     }
 
     if(telefono!="") {
-      if(!expTel.test(expTel)) {
-        errores += "<p>El teléfono no es válido</p>";
+      if(!expTel.test(telefono)) {
+        errores += "<p>-El teléfono no es válido</p>";
         document.getElementById(document.getElementById('telefono').parentNode.id).className+=' has-error';
       }
 
+    }
+
+    if(fechaNac=="") {
+      errores += "<p>-La fecha no puede estar vacía</p>";
+      document.getElementById(document.getElementById('fechaNac').parentNode.id).className+=' has-error';
     }
 
     if(errores=="")
@@ -160,9 +168,10 @@ function identificarse(){
   
 /*}*/
 
+
 /*FUNCION PARA EXPRESIONES REGULARES DE CONTACTA {*/
   function validacionContacta() {
-    var usuario = document.getElementById("usuario").value;
+    var nombre = document.getElementById("nombre").value;
     var email = document.getElementById("email").value;
     var telefono = document.getElementById("telefono").value;
     var text = document.getElementById("text").value;
@@ -171,23 +180,23 @@ function identificarse(){
     var expEmail = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
     var expTel = /^[9|6|7][0-9]{8}$/;
 
-    if(usuario=="") {
-      errores += "<p>El nombre de usuario no puede estar vacío</p>";
-      document.getElementById(document.getElementById('usuario').parentNode.id).className+=' has-error';
+    if(nombre=="") {
+      errores += "<p>-El nombre no puede estar vacío</p>";
+      document.getElementById(document.getElementById('nombre').parentNode.id).className+=' has-error';
     }
 
     if(!expEmail.test(email)) {
-      errores += "<p>El email no es válido</p>";
+      errores += "<p>-El email no es válido</p>";
       document.getElementById(document.getElementById('email').parentNode.id).className+=' has-error';
     }
 
     if(telefono!="") {
-      if(!expTel.test(expTel)) {
-        errores += "<p>El teléfono no es válido</p>";
+      if(!expTel.test(telefono)) {
+        errores += "<p>-El teléfono no es válido</p>";
         document.getElementById(document.getElementById('telefono').parentNode.id).className+=' has-error';
       }
 
-    }
+    } 
 
     if(text=="") {
       errores += "<p>El comentario no puede estar vacío</p>";
@@ -201,40 +210,65 @@ function identificarse(){
 
   }
   
-  
+/*FUNCION PARA EXPRESIONES REGULARES DEL PAGO {*/
+  function validacionPago() {
+    var email = document.getElementById("email").value;
+    var numtarjeta = document.getElementById("numtarjeta").value;
+    var cvv = document.getElementById("cvv").value;
+    var pais = document.getElementById("pais").value;
+    var nombre = document.getElementById("nombre").value;
+    var apellidos = document.getElementById("apellidos").value;
+    var fechaNac = document.getElementById("fechaNac").value;
+
+    var exptarjeta = /^[0-9]{16}$/;
+    var expcvv = /^[0-9]{3}$/;
+    var expEmail = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
+    var errores="";
+
+    if(pais=="") {
+      errores += "<p>-El pais no puede estar vacío</p>";
+      document.getElementById(document.getElementById('pais').parentNode.id).className+=' has-error';
+    }
+
+    if(apellidos=="") {
+      errores += "<p>-Los apellidos no pueden estar vacíos</p>";
+      document.getElementById(document.getElementById('apellidos').parentNode.id).className+=' has-error';
+    }
+
+    if(nombre=="") {
+      errores += "<p>-El nombre no puede estar vacío</p>";
+      document.getElementById(document.getElementById('nombre').parentNode.id).className+=' has-error';
+    }
+
+    if(!expEmail.test(email)) {
+      errores += "<p>-El email no es válido</p>";
+      document.getElementById(document.getElementById('email').parentNode.id).className+=' has-error';
+    }
+
+    if(!exptarjeta.test(numtarjeta)) {
+      errores += "<p>-El numero de tarjeta no es valido</p>";
+      document.getElementById(document.getElementById('numtarjeta').parentNode.id).className+=' has-error';
+    }
+
+
+    if(!expcvv.test(cvv)) {
+      errores += "<p>-El numero de CVV no es valido</p>";
+      document.getElementById(document.getElementById('cvv').parentNode.id).className+=' has-error';
+    }
+
+    if(fechaNac=="") {
+      errores += "<p>-La fecha no puede estar vacía</p>";
+      document.getElementById(document.getElementById('fechaNac').parentNode.id).className+=' has-error';
+    }
+
+    if(errores=="")
+      confirmarPago();
+
+    $("#validaciones").html(errores);
+
+  } 
 /*}*/
 
-/*FUNCION PARA COMPROBAR LOS DATOS DEL LOGIN {*/
-var elementosLog = new Array("usuario", "passwd", "usuarioReg", "passwdReg", "passwdReg2", "email", "fechaNac");
-function mandaValor(elemento) {
-  delete elementosLog[elementosLog.indexOf(elemento)];
-}
-
-function compruebaLog(){
-  var i = 0;
-  for(var k=0;k<2; k++) {
-    if(elementosLog[k]!=undefined) {
-      document.getElementById(document.getElementById(elementosLog[k]).parentNode.id).className+=' has-error';
-     } else
-      i++;
-
-    if(i==2)
-      validacionLogin();
-  }
-}
-function compruebaReg(){
-  var i = 0;
-  for(var k=2;k<elementosLog.length; k++) {
-    if(elementosLog[k]!=undefined) {
-        document.getElementById(document.getElementById(elementosLog[k]).parentNode.id).className+=' has-error';
-    } else 
-      i++;
-
-    if(i==5)
-      validacionReg();
-  }
-}
-/*}*/
 
 /*FUNCION PARA CERRAR SESION {*/
 function cerrarSesion() {
@@ -289,21 +323,21 @@ function cambiaFotoOut() {
 /*FUNCION PARA CAMBIAR LAS FRASES ALREFRESCAR LA PAGINA*/
 function cambiafrase() {
   var frases = [
-    '"El mundo es un libro, y aquellos que no viajan leen solo una página." -San Agustín.',
-    '"No hay tierras extranjeras. Quien viaja es el único extranjero". – Robert Louis Stevenson',
-    '"Aquel que no viaja no conoce el valor de los hombres". – Proverbio moro',
-    '"Nuestro destino nunca es un lugar, sino una nueva forma de ver las cosas". – Henry Miller',
+    '"El mundo es un libro, y aquellos que no viajan leen solo una página" -San Agustín',
+    '"No hay tierras extranjeras. Quien viaja es el único extranjero" – Robert Louis Stevenson',
+    '"Aquel que no viaja no conoce el valor de los hombres" – Proverbio moro',
+    '"Nuestro destino nunca es un lugar, sino una nueva forma de ver las cosas" – Henry Miller',
     '"Un viajero sin capacidad de observación es como un pájaro sin alas" – Moslih Eddin Saadi',
-    '"Todos los viajes tienen destinos secretos sobre los que el viajero nada sabe". – Martin Buber',
-    '"Dos senderos se abrían en el bosque y yo… yo tomé el menos transitado". – Robert Frost',
+    '"Todos los viajes tienen destinos secretos sobre los que el viajero nada sabe" – Martin Buber',
+    '"Dos senderos se abrían en el bosque y yo… yo tomé el menos transitado" – Robert Frost',
     '"Un buen viajero no tiene planes fijos ni tampoco la intención de llegar" – Lao Tzu',
     '"Es el viaje y no el arribo el que importa" – T. S. Eliot',
     '"Un viaje se mide mejor en amigos que en millas" –  Tim Cahill',
     '"No todos los que deambulan están perdidos" – J. R. R. Tolkien',
-    '"Viajar y cambiar de lugar revitaliza la mente". – Seneca',
-    '"Viajar es descubrir que todos están equivocados sobre los otros países". – Aldous Huxley',
-    '"El viajar sólo es glamoroso cuando se lo mira en retrospectiva". – Paul Theroux',
-    '"Un viajero sabio nunca desprecia a su propio país". – Carlo Goldoni'
+    '"Viajar y cambiar de lugar revitaliza la mente" – Seneca',
+    '"Viajar es descubrir que todos están equivocados sobre los otros países" – Aldous Huxley',
+    '"El viajar sólo es glamoroso cuando se lo mira en retrospectiva" – Paul Theroux',
+    '"Un viajero sabio nunca desprecia a su propio país" – Carlo Goldoni'
   ]
   var ale = Math.floor(Math.random() * 14);
 

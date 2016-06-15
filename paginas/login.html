@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,15 +75,15 @@
           <form id="loginForm" role="form" action="" method="post">
             <div class="form-group" id="form-group-usuario">
               <label for="usuario">Usuario:</label>
-              <input onchange="mandaValor('usuario')" type="text" class="form-control" name="usuario" id="usuario" placeholder="Name" required>
+              <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Name" required>
             </div>
 
             <div class="form-group" id="form-group-passwd">
               <label for="contrasena">Contraseña:</label>
-              <input onchange="mandaValor('passwd')" type="password" class="form-control" name="passwd" id="passwd" placeholder="Password" required>
+              <input type="password" class="form-control" name="passwd" id="passwd" placeholder="Password" required>
             </div>
 
-            <input type="button" id="submitLog" name="submit" class="btn btn-default" value="Login">
+            <input type="button" id="submitLog" name="submit" class="btn btn-warning" value="Login">
           </form>
 
           <div id="validaciones"></div>
@@ -95,22 +96,22 @@
             <form role="form" action="" method="post">
               <div class="form-group" id="form-group-usuarioReg">
                 <label for="usuarioReg"><span class="required">*</span> Nombre de usuario:</label>
-                <input onchange="mandaValor('usuarioReg')" type="text" class="form-control" name="usuarioReg" id="usuarioReg" placeholder="Usuario" required>
+                <input type="text" class="form-control" name="usuarioReg" id="usuarioReg" placeholder="Usuario" required>
               </div>
 
               <div class="form-group" id="form-group-passwdReg">
                 <label for="contrasenaReg"><span class="required">*</span> Contraseña:</label>
-                <input onchange="mandaValor('passwdReg')" type="password" class="form-control" name="passwdReg" id="passwdReg" placeholder="Password" required>
+                <input type="password" class="form-control" name="passwdReg" id="passwdReg" placeholder="Password" required>
               </div>
 
               <div class="form-group" id="form-group-passwdReg2">
                 <label for="contrasena2"><span class="required">*</span> Repita contraseña:</label>
-                <input onchange="mandaValor('passwdReg2')" type="password" class="form-control" name="passwdReg2" id="passwdReg2" placeholder="Password" required></td>
+                <input type="password" class="form-control" name="passwdReg2" id="passwdReg2" placeholder="Password" required></td>
               </div>
 
               <div class="form-group" id="form-group-email">
                 <label for="email"><span class="required">*</span> Correo electrónico:</label>
-                <input onchange="mandaValor('email')" type="email" class="form-control" name="email" id="email" placeholder="usuario@gmail.com" required>
+                <input type="email" class="form-control" name="email" id="email" placeholder="usuario@gmail.com" required>
               </div>
 
               <div class="form-group" id="form-group-telefono">
@@ -120,7 +121,7 @@
 
               <div class="form-group" id="form-group-fechaNac">
                 <label for="fechaNac"><span class="required">*</span> Fecha de nacimiento:</label>
-                <input onchange="mandaValor('fechaNac')" type="date" class="form-control" name="fechaNac" id="fechaNac">
+                <input type="date" class="form-control" name="fechaNac" id="fechaNac">
               </div>
 
               <input type="button" id="submitReg" name="submitReg" class="btn btn-primary" value="Regístrate">

@@ -183,7 +183,7 @@
                             </div>
                           </div>
                           <div class='col-md-1'>
-                          </div><div class='col-md-2 bordeNaranja anchoResVuelos'><div id='map'></div></div>
+                          </div><div class='col-md-2 bordeNaranja anchoResVuelos'><img src='".$imagen_hotel."' alt='imagen_hotel' class='imgResultHotel'><div id='map'></div></div>
                         </div>
 
                         <div class='row'>

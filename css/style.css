@@ -1,3 +1,4 @@
+
 @font-face {
   font-family: "kg_life";
   src: url("../media/fuentes/KGLifeisMessy.ttf");
@@ -224,6 +225,12 @@ ul {
     max-width: 100%;
 }
 
+.imgResultHotel { 
+  height: auto;
+  max-width: 100%;
+  margin-top: 40px;
+}
+
 .bordeNaranja { border: 2px solid #EC6C1A; }
 
 .anchoResVuelos { height: 150px; background-color: white; }
@@ -348,5 +355,12 @@ ul {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
 }
 
+
+/*}validaciones*/
+
+#validaciones{
+  margin-top: 40px;
+  color: orange;
+  font-style: italic;
+
 }
-/*}*/

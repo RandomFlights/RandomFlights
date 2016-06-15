@@ -112,7 +112,7 @@
           </div>
 
           <div class="form-group" id="form-group-numtarjeta">
-            <label for="numtarjeta">Numero de tarjeta:</label>
+            <label for="numtarjeta"><span class="required">*</span>Numero de tarjeta:</label>
             <input type="text" class="form-control" name="numtarjeta" id="numtarjeta">
           </div>
 
@@ -127,12 +127,12 @@
             <input type="radio" name="tarjeta"><img class="tarjeta" src="../media/img/mastercard.png" alt="fotovisa"/>
           </div>
 
-          <input type="button" id="submitPago" onclick="confirmarPago()" name="submitPago" class="btn btn-warning" value="Confirmar compra">
+          <input type="button" id="submitPago" name="submitPago" class="btn btn-warning" value="Confirmar compra">
+          <div id="validaciones"></div>
         </form>
       </div>
       <div class="col-md-1"></div><!-- Columna vacia -->
     </div>
-
     <div class="row">
       <div id="RESULTADOCOMPRA"></div>
     </div>
