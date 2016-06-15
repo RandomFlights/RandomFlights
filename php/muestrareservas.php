@@ -12,7 +12,7 @@
     else {
         $hoy = date('Y-m-d');
         $con = 0;
-        $consulta = mysql_query("SELECT * FROM reservas WHERE email_user='$user'",$conexion);
+        $consulta = mysql_query("SELECT * FROM reservas WHERE email_user='$user' AND llegada>='$hoy'",$conexion);
         echo "<div class='row'>";
 
         if(mysql_num_rows($consulta) == 0) {
